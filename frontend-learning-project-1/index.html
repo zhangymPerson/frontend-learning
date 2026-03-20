@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  文件：index.html（首页）
+  作用：网站的入口页面，展示欢迎信息和导航
+  ============================================================
+
+  【知识点 1】DOCTYPE 声明
+  - <!DOCTYPE html> 告诉浏览器："这是一个 HTML5 文档"
+  - 必须放在文件第一行，否则浏览器可能进入"怪异模式"（Quirks Mode）
+  - 没有它，浏览器可能无法正确渲染页面
+
+  【知识点 2】HTML 文档基本结构
+  - <html> 是根元素，所有内容都在里面
+  - <head> 存放"元信息"（标题、编码、样式等），不会直接显示在页面上
+  - <body> 存放"页面内容"（文字、图片、按钮等），用户能看到的部分
+-->
+<html lang="zh-CN">
+<head>
+  <!--
+    【知识点 3】meta charset - 字符编码
+    - UTF-8 支持几乎所有语言的字符（中文、英文、日文等）
+    - 不设置这个，中文可能会显示为乱码
+  -->
+  <meta charset="UTF-8">
+
+  <!--
+    【知识点 4】viewport 元标签 - 响应式设计基础
+    - width=device-width：视口宽度 = 设备屏幕宽度
+    - initial-scale=1.0：初始缩放比例 = 1（不缩放）
+    - 有了它，手机访问时页面不会被缩小成桌面版
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--
+    【知识点 5】<title> 标签
+    - 显示在浏览器标签页上的文字
+    - 也是搜索引擎结果中显示的标题
+  -->
+  <title>前端学习项目1 - 首页</title>
+
+  <!--
+    【知识点 6】引入外部 CSS 样式表
+    - rel="stylesheet"：告诉浏览器这是一个样式表
+    - href：指向 CSS 文件的路径（相对于当前 HTML 文件）
+  -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       【知识点 7】语义化标签
+       - HTML5 提供了很多有含义的标签，比如 <header>、<nav>、<main>、<footer>
+       - 它们和 <div> 功能上一样，但语义更清晰，对搜索引擎和屏幕阅读器更友好
+       - 用对标签是好习惯！
+       ============================================================ -->
+
+  <!-- 顶部导航栏 -->
+  <header class="site-header">
+    <div class="container">
+      <!--
+        【知识点 8】<a> 标签 - 超链接
+        - href="..." 指定点击后跳转的目标地址
+        - href="index.html" → 跳转到首页
+        - href="pages/about.html" → 跳转到关于页面（相对路径）
+      -->
+      <h1 class="logo">🎓 前端学习项目1</h1>
+
+      <!--
+        【知识点 9】<nav> + <ul>/<li> - 导航菜单
+        - <nav> 表示"这是一组导航链接"
+        - <ul> 无序列表 + <li> 列表项 = 经典的菜单结构
+      -->
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html" class="active">首页</a></li>
+          <li><a href="pages/about.html">关于</a></li>
+          <li><a href="pages/contact.html">联系</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 页面主体内容 -->
+  <main class="container">
+
+    <!--
+      【知识点 10】标题标签 h1 ~ h6
+      - h1 最大最重要，h6 最小
+      - 一个页面通常只有一个 h1（主标题）
+      - 搜索引擎用标题来理解页面结构
+    -->
+    <section class="hero">
+      <h2>👋 欢迎来到前端学习项目！</h2>
+      <p>这是一个专门为初学者设计的项目，帮助你理解 HTML 和 JavaScript 的基础知识。</p>
+    </section>
+
+    <!--
+      【知识点 11】<section> - 内容分区
+      - 把页面分成有意义的区块
+      - 比 <div> 更有语义："这是一个独立的内容段落"
+    -->
+    <section class="content-section">
+      <h3>📚 本项目包含的知识点</h3>
+
+      <!--
+        【知识点 12】<ul> + <li> - 列表
+        - ul = unordered list（无序列表），前面会有圆点
+        - ol = ordered list（有序列表），前面会有序号 1, 2, 3...
+      -->
+      <ul class="topic-list">
+        <li><strong>HTML 基础：</strong>标签、属性、文档结构、语义化</li>
+        <li><strong>CSS 基础：</strong>选择器、盒模型、布局、颜色</li>
+        <li><strong>JavaScript 基础：</strong>变量、函数、事件、DOM 操作</li>
+        <li><strong>页面导航：</strong>多页面之间的跳转</li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h3>🗂️ 项目文件结构</h3>
+
+      <!--
+        【知识点 13】<pre> + <code> - 展示代码
+        - <pre> 保留原始格式（空格、换行）
+        - <code> 表示这是一段代码
+        - 两者配合可以漂亮地展示代码片段
+      -->
+      <pre><code>前端学习项目1/
+├── index.html          ← 你正在看的这个页面（首页）
+├── css/
+│   └── style.css       ← 所有页面共用的样式
+├── js/
+│   └── main.js         ← 所有页面共用的 JavaScript
+├── pages/
+│   ├── about.html      ← "关于"页面
+│   └── contact.html    ← "联系"页面（有交互功能！）
+└── README.md           ← 启动说明文档</code></pre>
+    </section>
+
+    <!-- 一个简单的交互区域 -->
+    <section class="content-section">
+      <h3>🎯 试一试：点击按钮</h3>
+      <p>下面的按钮使用了 JavaScript，点击它看看会发生什么：</p>
+
+      <!--
+        【知识点 14】按钮和 onclick 事件
+        - <button> 创建一个按钮
+        - onclick="..." 点击按钮时执行 JavaScript 代码
+        - 这是最简单的事件绑定方式（后面会学更规范的写法）
+      -->
+      <button id="helloBtn" onclick="sayHello()">点击我打招呼 👋</button>
+
+      <!--
+        【知识点 15】<p> 段落标签
+        - 用于显示一段文字
+        - 浏览器会自动在 <p> 前后加一些间距
+      -->
+      <p id="greetingText" class="greeting"></p>
+    </section>
+
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="site-footer">
+    <div class="container">
+      <!--
+        【知识点 16】&copy; 是 HTML 实体
+        - 代表版权符号 ©
+        - HTML 中有些字符有特殊含义（如 < > &），需要用实体来显示
+        - 常见实体：&lt; (<) &gt; (>) &amp; (&) &nbsp; (空格)
+      -->
+      <p>&copy; 2026 前端学习项目1 — 用 ❤️ 制作</p>
+    </div>
+  </footer>
+
+  <!--
+    【知识点 17】引入 JavaScript 文件
+    - 放在 </body> 前面，而不是 <head> 中
+    - 原因：浏览器从上到下解析 HTML，如果 JS 在前面加载，
+      此时下面的 DOM 元素还没解析完，JS 找不到它们就会报错
+    - 放在最后可以确保所有 HTML 元素都已就绪
+  -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>

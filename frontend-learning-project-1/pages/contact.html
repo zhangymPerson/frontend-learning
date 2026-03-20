@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  文件：pages/contact.html（联系页面）
+  作用：展示表单和 JavaScript 交互功能
+  这是最"有趣"的页面，因为它有真正的用户交互！
+  ============================================================
+
+  【复习】相对路径：当前在 pages/，用 ../ 回到上级目录
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>前端学习项目1 - 联系</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">🎓 前端学习项目1</h1>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="../index.html">首页</a></li>
+          <li><a href="about.html">关于</a></li>
+          <li><a href="contact.html" class="active">联系</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <h2>📬 联系我们</h2>
+      <p>填写下面的表单试试！学习如何用 JavaScript 处理用户输入</p>
+    </section>
+
+    <section class="content-section">
+      <h3>📝 联系表单</h3>
+
+      <!--
+        【知识点 1】<form> 表单标签
+        - 表单是收集用户输入的容器
+        - <input> 输入框、<textarea> 文本域、<button> 按钮都在里面
+        - 用 id 给每个元素命名，方便 JavaScript 找到它们
+      -->
+      <form id="contactForm" novalidate>
+        <!--
+          【知识点 2】novalidate 属性
+          - 禁用浏览器自带的表单验证
+          - 因为我们用 JavaScript 自己做验证（更灵活）
+        -->
+
+        <!-- 姓名输入 -->
+        <div class="form-group">
+          <!--
+            【知识点 3】<label> 标签
+            - 给输入框添加说明文字
+            - for="nameInput" 和 input 的 id="nameInput" 对应
+            - 点击 label 也能聚焦到对应的输入框（更好的用户体验）
+          -->
+          <label for="nameInput">👤 姓名</label>
+
+          <!--
+            【知识点 4】<input> 输入框
+            - type="text"：普通文本输入
+            - placeholder：输入框为空时显示的提示文字
+            - required：表示这个字段是必填的
+            - id：唯一标识符，JavaScript 通过它找到这个元素
+          -->
+          <input type="text" id="nameInput" placeholder="请输入你的姓名" required>
+        </div>
+
+        <!-- 邮箱输入 -->
+        <div class="form-group">
+          <label for="emailInput">📧 邮箱</label>
+
+          <!--
+            【知识点 5】input 的 type 属性
+            - type="email"：邮箱输入框，浏览器会检查格式
+            - type="password"：密码输入框，文字会被隐藏
+            - type="number"：数字输入框
+            - type="date"：日期选择器
+            - type="checkbox"：复选框
+            - type="radio"：单选按钮
+          -->
+          <input type="email" id="emailInput" placeholder="请输入你的邮箱" required>
+        </div>
+
+        <!-- 消息文本域 -->
+        <div class="form-group">
+          <label for="messageInput">💬 消息</label>
+
+          <!--
+            【知识点 6】<textarea> 多行文本输入
+            - 和 <input type="text"> 不同，可以输入多行文字
+            - rows="5"：初始显示 5 行高度
+            - CSS 中设置了 min-height 和 resize: vertical
+          -->
+          <textarea id="messageInput" placeholder="请输入你的消息..." rows="5" required></textarea>
+        </div>
+
+        <!-- 提交按钮 -->
+        <!--
+          【知识点 7】<button> 和 <input type="submit">
+          - 两者都可以提交表单
+          - <button> 更灵活，里面可以放文字、图标等
+          - type="submit" 表示这是提交按钮（默认就是 submit）
+          - 没有 type 时，<button> 在 <form> 中默认也是 submit
+        -->
+        <button type="submit">发送消息 🚀</button>
+      </form>
+
+      <!--
+        【知识点 8】结果提示区域
+        - 默认隐藏（CSS 中 display: none）
+        - JavaScript 提交成功后修改内容并显示
+        - 这种"隐藏 → 显示"的交互模式非常常见
+      -->
+      <div id="resultMessage" class="result-message"></div>
+    </section>
+
+    <!-- JS 知识讲解区域 -->
+    <section class="content-section">
+      <h3>🔧 这个表单涉及的 JavaScript 知识</h3>
+
+      <pre><code>// 获取输入框的值
+const name = document.getElementById('nameInput').value;
+
+// 监听表单提交
+form.addEventListener('submit', function(event) {
+  event.preventDefault();  // 阻止页面刷新
+  // ... 验证和处理逻辑
+});
+
+// 显示结果
+resultEl.textContent = '提交成功！';
+resultEl.classList.add('success');</code></pre>
+
+      <p style="margin-top: 15px; color: #555;">
+        💡 打开 <code>js/main.js</code> 文件，搜索 "contactForm" 可以看到完整的代码和注释！
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 前端学习项目1 — 用 ❤️ 制作</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  文件：pages/about.html（关于页面）
+  作用：展示学习路径和核心概念介绍
+  ============================================================
+
+  【复习知识点】
+  - DOCTYPE 声明、html/head/body 结构
+  - <meta> 标签、<link> 引入样式
+  - 这些和 index.html 一样，每个 HTML 文件都需要
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>前端学习项目1 - 关于</title>
+
+  <!--
+    【知识点 1】相对路径
+    - 当前文件在 pages/ 目录下
+    - css/ 和 js/ 在上一级目录
+    - ../ 表示"回到上一级目录"
+    - ../css/style.css = 从 pages/ 上一层 → 进入 css/ → 找到 style.css
+  -->
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- 导航栏（和首页保持一致） -->
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">🎓 前端学习项目1</h1>
+      <nav>
+        <ul class="nav-list">
+          <!--
+            【知识点 2】当前页面标记
+            - class="active" 标记当前所在页面的导航项
+            - CSS 中 .nav-list a.active 会应用高亮样式
+          -->
+          <li><a href="../index.html">首页</a></li>
+          <li><a href="about.html" class="active">关于</a></li>
+          <li><a href="contact.html">联系</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <h2>📖 关于这个项目</h2>
+      <p>了解前端开发的核心概念和学习路径</p>
+    </section>
+
+    <!-- 学习路径 -->
+    <section class="content-section">
+      <h3>🗺️ 前端学习路线图</h3>
+      <p>前端开发有三个核心技术，建议按以下顺序学习：</p>
+
+      <div class="card-grid">
+        <!--
+          【知识点 3】多个内容卡片
+          - 每个 .card 是一个独立的信息卡片
+          - CSS Grid 让它们自动排列成网格
+        -->
+        <div class="card">
+          <h4>1️⃣ HTML — 结构</h4>
+          <p>
+            HTML 是网页的骨架。它定义了页面上有什么内容：
+            标题、段落、图片、链接、列表...
+          </p>
+          <p><strong>学习重点：</strong></p>
+          <ul>
+            <li>常用标签（标题、段落、链接、图片）</li>
+            <li>表单元素（输入框、按钮、下拉菜单）</li>
+            <li>语义化标签（header、nav、main、footer）</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>2️⃣ CSS — 样式</h4>
+          <p>
+            CSS 是网页的衣服。它控制页面的外观：
+            颜色、字体、大小、间距、布局...
+          </p>
+          <p><strong>学习重点：</strong></p>
+          <ul>
+            <li>选择器（元素、类、ID、后代）</li>
+            <li>盒模型（margin、padding、border）</li>
+            <li>布局（Flexbox、Grid）</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>3️⃣ JavaScript — 行为</h4>
+          <p>
+            JavaScript 是网页的大脑。它让页面能响应用户的操作：
+            点击、输入、动画、数据处理...
+          </p>
+          <p><strong>学习重点：</strong></p>
+          <ul>
+            <li>变量和数据类型</li>
+            <li>函数和条件判断</li>
+            <li>DOM 操作（找到元素、修改内容）</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 核心概念 -->
+    <section class="content-section">
+      <h3>💡 核心概念速查</h3>
+
+      <!--
+        【知识点 4】定义列表（Description List）
+        - <dl> 定义列表容器
+        - <dt> 定义术语（标题）
+        - <dd> 定义描述（内容）
+        - 适合"术语-解释"这种结构
+      -->
+      <dl style="margin-top: 15px;">
+        <dt style="font-weight: bold; color: #2c3e50; margin-top: 12px;">DOM（文档对象模型）</dt>
+        <dd style="margin-left: 20px; color: #555;">
+          浏览器把 HTML 文档解析成一棵"树"，JavaScript 可以通过这棵树来找到和操作页面上的任何元素。
+        </dd>
+
+        <dt style="font-weight: bold; color: #2c3e50; margin-top: 12px;">事件（Event）</dt>
+        <dd style="margin-left: 20px; color: #555;">
+          用户在页面上的操作（点击、滚动、输入等）。JavaScript 可以"监听"这些事件并做出响应。
+        </dd>
+
+        <dt style="font-weight: bold; color: #2c3e50; margin-top: 12px;">响应式设计（Responsive Design）</dt>
+        <dd style="margin-left: 20px; color: #555;">
+          让网页能自动适应不同大小的屏幕（手机、平板、电脑）。核心工具是媒体查询（Media Query）。
+        </dd>
+
+        <dt style="font-weight: bold; color: #2c3e50; margin-top: 12px;">盒模型（Box Model）</dt>
+        <dd style="margin-left: 20px; color: #555;">
+          每个 HTML 元素都是一个"盒子"，由内到外分别是：内容 → 内边距（padding）→ 边框（border）→ 外边距（margin）。
+        </dd>
+      </dl>
+    </section>
+
+    <!-- 开发工具推荐 -->
+    <section class="content-section">
+      <h3>🛠️ 推荐开发工具</h3>
+      <ul class="topic-list">
+        <li><strong>代码编辑器：</strong>VS Code（免费，插件丰富）</li>
+        <li><strong>浏览器：</strong>Chrome 或 Firefox（开发者工具强大）</li>
+        <li><strong>版本控制：</strong>Git（管理代码变更）</li>
+        <li><strong>学习网站：</strong>MDN Web Docs（最权威的前端文档）</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 前端学习项目1 — 用 ❤️ 制作</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
