@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  文件：index.html（首页）— TypeScript 版本
+  作用：和项目1功能相同，但 JS 是 TypeScript 编译后的结果
+
+  【与项目1的区别】
+  - HTML 结构完全相同
+  - CSS 样式完全相同
+  - JavaScript 来自 ts/main.ts 编译后的 js/main.js
+  - 所有逻辑都经过 TypeScript 类型检查，更可靠
+  ============================================================
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>前端学习项目2 - TypeScript 版</title>
+
+  <!--
+    【复习】引入 CSS
+    - 和项目1相同，只是页面标题不同
+  -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 顶部导航栏 -->
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">🎓 前端学习项目2 (TS)</h1>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html" class="active">首页</a></li>
+          <li><a href="pages/about.html">关于</a></li>
+          <li><a href="pages/contact.html">联系</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <h2>👋 欢迎来到 TypeScript 版前端学习项目！</h2>
+      <p>这是项目1的 TypeScript 重写版本，体验类型安全的前端开发。</p>
+    </section>
+
+    <section class="content-section">
+      <h3>🔄 项目1 vs 项目2：有什么不同？</h3>
+
+      <!--
+        【知识点】对比表格
+        - <table> 表格标签
+        - <thead> 表头 / <tbody> 表体
+        - <tr> 表格行 / <th> 表头单元格 / <td> 数据单元格
+      -->
+      <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+        <thead>
+          <tr style="background: #f0f0f0;">
+            <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">对比项</th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">项目1 (JavaScript)</th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">项目2 (TypeScript)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ddd;">源码文件</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">js/main.js</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">ts/main.ts → 编译 → js/main.js</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ddd;">类型检查</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">❌ 没有</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">✅ 编译时检查</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ddd;">智能提示</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">⚠️ 有限</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">✅ 非常强大</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border: 1px solid #ddd;">运行环境</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">直接运行</td>
+            <td style="padding: 10px; border: 1px solid #ddd;">需要先编译</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="content-section">
+      <h3>📚 TypeScript 核心知识点</h3>
+      <ul class="topic-list">
+        <li><strong>类型标注：</strong>给变量、参数、返回值加上类型约束</li>
+        <li><strong>接口 (interface)：</strong>定义对象的"形状"（有哪些属性、什么类型）</li>
+        <li><strong>联合类型：</strong>一个变量可以是多种类型之一（string | number）</li>
+        <li><strong>类型断言：</strong>告诉编译器"我比你更确定这个类型"</li>
+        <li><strong>枚举 (enum)：</strong>定义一组命名常量，避免魔法字符串</li>
+        <li><strong>类型推断：</strong>TypeScript 能自动推断大部分类型，不用手动标注</li>
+      </ul>
+    </section>
+
+    <section class="content-section">
+      <h3>🗂️ 项目文件结构</h3>
+      <pre><code>前端学习项目2/
+├── tsconfig.json       ← TypeScript 编译配置
+├── index.html          ← 首页
+├── css/
+│   └── style.css       ← 样式（和项目1相同）
+├── ts/                 ← TypeScript 源码目录
+│   ├── types.ts        ← 类型定义（interface、type、enum）
+│   └── main.ts         ← 主逻辑（带详细TS注释）
+├── js/                 ← 编译输出目录（tsc 自动生成）
+│   └── main.js         ← 不要直接编辑这个文件！
+├── pages/
+│   ├── about.html      ← 关于页面
+│   └── contact.html    ← 联系页面
+└── README.md           ← 启动说明</code></pre>
+    </section>
+
+    <section class="content-section">
+      <h3>🎯 试一试</h3>
+      <p>下面的按钮背后是 TypeScript 代码，点击看看：</p>
+      <button id="helloBtn" onclick="sayHello()">点击我打招呼 👋</button>
+      <p id="greetingText" class="greeting"></p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 前端学习项目2 (TypeScript) — 用 ❤️ 制作</p>
+    </div>
+  </footer>
+
+  <!--
+    【注意】引入的是编译后的 js/main.js
+    - 你不应该直接编辑 js/main.js
+    - 应该编辑 ts/main.ts，然后运行 tsc 编译
+    - js/main.js 是"生成物"，ts/main.ts 是"源文件"
+  -->
+  <script src="js/main.js"></script>
+</body>
+</html>

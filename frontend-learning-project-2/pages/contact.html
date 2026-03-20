@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>前端学习项目2 - 联系 (TypeScript)</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">🎓 前端学习项目2 (TS)</h1>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="../index.html">首页</a></li>
+          <li><a href="about.html">关于</a></li>
+          <li><a href="contact.html" class="active">联系</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <h2>📬 联系我们 (TypeScript 版)</h2>
+      <p>体验 TypeScript 类型安全的表单处理</p>
+    </section>
+
+    <section class="content-section">
+      <h3>📝 联系表单</h3>
+
+      <!--
+        【复习】表单结构和项目1相同
+        - id 属性和 TS 中 getElementById 的 id 对应
+        - TS 用 as HTMLInputElement 断言元素类型
+      -->
+      <form id="contactForm" novalidate>
+        <div class="form-group">
+          <label for="nameInput">👤 姓名</label>
+          <input type="text" id="nameInput" placeholder="请输入你的姓名" required>
+        </div>
+
+        <div class="form-group">
+          <label for="emailInput">📧 邮箱</label>
+          <input type="email" id="emailInput" placeholder="请输入你的邮箱" required>
+        </div>
+
+        <div class="form-group">
+          <label for="messageInput">💬 消息</label>
+          <textarea id="messageInput" placeholder="请输入你的消息..." rows="5" required></textarea>
+        </div>
+
+        <button type="submit">发送消息 🚀</button>
+      </form>
+
+      <div id="resultMessage" class="result-message"></div>
+    </section>
+
+    <!-- TypeScript 表单处理解析 -->
+    <section class="content-section">
+      <h3>🔧 TypeScript 如何让表单更安全</h3>
+
+      <p style="margin-bottom: 10px; color: #555;"><strong>Step 1：定义接口（在 ts/types.ts 中）</strong></p>
+      <pre><code>// 定义表单数据的"形状"
+interface ContactFormData {
+  name: string;     // 必须是字符串
+  email: string;    // 必须是字符串
+  message: string;  // 必须是字符串
+}
+
+// 定义验证结果的"形状"
+interface ValidationResult {
+  isValid: boolean;
+  errorMessage: string;
+}</code></pre>
+
+      <p style="margin: 20px 0 10px; color: #555;"><strong>Step 2：获取表单数据（类型安全）</strong></p>
+      <pre><code>// 断言元素类型，TS 知道 input 有 .value 属性
+const nameInput = document.getElementById('nameInput') as HTMLInputElement;
+const name: string = nameInput.value.trim();  // 返回 string
+
+// 返回值必须符合 ContactFormData 接口
+const getFormData = (): ContactFormData => {
+  return { name, email, message };  // 少一个属性？编译报错！
+};</code></pre>
+
+      <p style="margin: 20px 0 10px; color: #555;"><strong>Step 3：验证（返回类型约束）</strong></p>
+      <pre><code>// 参数类型 + 返回类型都有标注
+const validateForm = (data: ContactFormData): ValidationResult => {
+  // 解构赋值，类型自动继承
+  const { name, email, message } = data;
+
+  if (!name || !email || !message) {
+    return { isValid: false, errorMessage: '请填写所有字段！' };
+  }
+  // ...
+};</code></pre>
+
+      <p style="margin-top: 15px; color: #555;">
+        🔑 <strong>核心价值：</strong>每个函数的输入和输出都有明确的类型约束。
+        传错参数类型、返回值形状不对 → 编译器立刻报错，不会等到运行时才发现 bug！
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 前端学习项目2 (TypeScript) — 用 ❤️ 制作</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

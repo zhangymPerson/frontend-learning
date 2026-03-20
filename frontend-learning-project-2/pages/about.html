@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>前端学习项目2 - 关于 (TypeScript)</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">🎓 前端学习项目2 (TS)</h1>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="../index.html">首页</a></li>
+          <li><a href="about.html" class="active">关于</a></li>
+          <li><a href="contact.html">联系</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <h2>📖 TypeScript 学习指南</h2>
+      <p>理解 TypeScript 的核心概念和工作流程</p>
+    </section>
+
+    <!-- TypeScript 工作流程 -->
+    <section class="content-section">
+      <h3>⚙️ TypeScript 工作流程</h3>
+      <pre><code>  你写的代码            编译器处理           浏览器运行
+  ─────────────        ─────────────        ─────────────
+  ts/main.ts    →→→    tsc 编译      →→→    js/main.js
+  (TypeScript)         (类型检查)           (纯 JavaScript)
+  (带类型标注)         (去掉类型)           (浏览器能直接运行)
+  (你维护的源码)       (检查类型错误)        (用户看到的代码)</code></pre>
+
+      <p style="margin-top: 15px; color: #555;">
+        💡 <strong>关键理解：</strong>TypeScript 不是浏览器能直接运行的语言。
+        它需要先"编译"（也叫"转译"）成 JavaScript。浏览器最终执行的是编译后的 JS。
+        TypeScript 的价值在于<strong>开发阶段</strong>帮你发现错误。
+      </p>
+    </section>
+
+    <!-- 核心概念卡片 -->
+    <section class="content-section">
+      <h3>💡 TypeScript 核心概念</h3>
+      <div class="card-grid">
+        <div class="card">
+          <h4>🏷️ 类型标注</h4>
+          <p><code>let name: string = "你好"</code></p>
+          <p>给变量声明类型，写错了编辑器立刻报错。TypeScript 最基础也最重要的能力。</p>
+        </div>
+
+        <div class="card">
+          <h4>📋 接口 Interface</h4>
+          <p><code>interface User { name: string; age: number }</code></p>
+          <p>定义对象的"形状"。对象必须符合接口的约束，不能多也不能少。</p>
+        </div>
+
+        <div class="card">
+          <h4>🔀 联合类型</h4>
+          <p><code>let val: string | number</code></p>
+          <p>一个变量可以是多种类型之一。搭配"类型收窄"使用，先判断再操作。</p>
+        </div>
+
+        <div class="card">
+          <h4>🎯 类型断言</h4>
+          <p><code>el as HTMLInputElement</code></p>
+          <p>当 TypeScript 推断的类型不够精确时，你告诉它"我知道更准确的类型"。</p>
+        </div>
+
+        <div class="card">
+          <h4>📊 枚举 Enum</h4>
+          <p><code>enum Color { Red, Green, Blue }</code></p>
+          <p>定义一组命名常量。避免到处写魔法字符串，写错了编译器会告诉你。</p>
+        </div>
+
+        <div class="card">
+          <h4>🧠 类型推断</h4>
+          <p><code>const x = 42 // TS 知道 x 是 number</code></p>
+          <p>TypeScript 很聪明，大部分时候能自动推断类型。你不需要每个都手动标注。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 从 JS 到 TS 的变化 -->
+    <section class="content-section">
+      <h3>🔄 JavaScript → TypeScript：代码对比</h3>
+
+      <p style="margin-bottom: 10px; color: #555;"><strong>JavaScript 写法（项目1）：</strong></p>
+      <pre><code>// 项目1：JavaScript
+let clickCount = 0;
+
+function sayHello() {
+  const el = document.getElementById('greetingText');
+  el.textContent = '你好！';  // 如果 el 是 null，运行时才崩溃！
+}</code></pre>
+
+      <p style="margin: 20px 0 10px; color: #555;"><strong>TypeScript 写法（项目2）：</strong></p>
+      <pre><code>// 项目2：TypeScript
+let clickCount: number = 0;  // 类型标注：这是数字
+
+const sayHello = (): void => {
+  const el = document.getElementById('greetingText');
+
+  if (!el) return;  // 空值检查：编译器要求你处理 null 的情况
+
+  el.textContent = '你好！';  // 这里 TypeScript 知道 el 不是 null，安全！
+};</code></pre>
+
+      <p style="margin-top: 15px; color: #555;">
+        🔑 <strong>关键区别：</strong>TypeScript 在编译阶段就发现了 <code>el</code> 可能是 <code>null</code> 的问题，
+        强制你处理这种情况。JavaScript 要等到运行时才会崩溃。
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 前端学习项目2 (TypeScript) — 用 ❤️ 制作</p>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

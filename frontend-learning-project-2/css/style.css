@@ -1,0 +1,356 @@
+/*
+  ============================================================
+  文件：css/style.css
+  作用：整个网站的样式文件
+  ============================================================
+
+  【知识点 1】CSS 是什么？
+  - CSS = Cascading Style Sheets（层叠样式表）
+  - 负责"长什么样"：颜色、大小、间距、布局...
+  - HTML 负责"有什么内容"，CSS 负责"内容怎么展示"
+
+  【知识点 2】CSS 基本语法
+  - 选择器 { 属性: 值; }
+  - 选择器：选中要设置样式的 HTML 元素
+  - 属性：要改变的样式（颜色、大小等）
+  - 值：具体的设置
+  - 例如：p { color: red; } 表示"所有 <p> 标签的文字变成红色"
+*/
+
+/* ============================================================
+   【知识点 3】CSS 选择器（Selectors）
+
+   常见选择器：
+   - 元素选择器：p { } → 选中所有 <p>
+   - 类选择器：.classname { } → 选中 class="classname" 的元素
+   - ID选择器：#idname { } → 选中 id="idname" 的元素（一个页面中 id 应该唯一）
+   - 后代选择器：.parent .child { } → 选中 .parent 里面的 .child
+   ============================================================ */
+
+/* ============================================================
+   【知识点 4】CSS Reset / Normalize
+   - 不同浏览器对 HTML 元素有默认样式（比如 <body> 有 margin）
+   - 用 * 选择器重置所有元素的默认样式，保证跨浏览器一致性
+   ============================================================ */
+* {
+  margin: 0;           /* 外边距 = 0 */
+  padding: 0;          /* 内边距 = 0 */
+  box-sizing: border-box;
+  /*
+    【知识点 5】box-sizing: border-box
+    - 默认情况下，width 不包含 padding 和 border
+    - 设为 border-box 后，width 就包含 padding 和 border
+    - 这样设置宽高更直观，不容易出 bug
+  */
+}
+
+/* ============================================================
+   【知识点 6】body 样式和字体
+   - font-family：字体列表，浏览器会依次尝试，用第一个可用的
+   - line-height：行间距，1.6 倍是比较舒适的阅读高度
+   - color：文字颜色（可以用英文名、#十六进制、rgb() 等）
+   ============================================================ */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+  line-height: 1.6;
+  color: #333;               /* 深灰色文字 */
+  background-color: #f5f5f5; /* 浅灰色背景 */
+}
+
+/* ============================================================
+   【知识点 7】通用容器类
+   - container 类设置最大宽度并居中
+   - margin: 0 auto → 上下为0，左右自动（实现水平居中）
+   - 这是一种经典的"居中布局"技巧
+   ============================================================ */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px; /* 左右留出一些内边距，防止内容贴边 */
+}
+
+/* ==================== 头部样式 ==================== */
+
+/* 【知识点 8】背景色和文字颜色搭配 */
+.site-header {
+  background-color: #2c3e50; /* 深蓝灰色 */
+  color: #fff;               /* 白色文字 */
+  padding: 15px 0;
+}
+
+.site-header .container {
+  display: flex;             /* 弹性布局，让 logo 和导航水平排列 */
+  justify-content: space-between; /* 两端对齐 */
+  align-items: center;       /* 垂直居中 */
+}
+
+.logo {
+  font-size: 1.4rem;         /* rem 是相对单位，相对于根元素(html)的字体大小 */
+}
+
+/* 【知识点 9】导航列表样式 */
+.nav-list {
+  list-style: none;          /* 去掉 <ul> 默认的圆点 */
+  display: flex;             /* 让列表项水平排列 */
+  gap: 20px;                 /* 列表项之间的间距 */
+}
+
+.nav-list a {
+  color: #ecf0f1;            /* 浅白色链接 */
+  text-decoration: none;     /* 去掉链接默认的下划线 */
+  padding: 5px 10px;
+  border-radius: 4px;        /* 圆角 */
+  transition: background-color 0.3s;
+  /*
+    【知识点 10】transition 过渡动画
+    - 让样式变化有一个平滑的过渡效果
+    - 0.3s 表示过渡持续 0.3 秒
+    - 比如鼠标悬停时背景色变化，不会突然变，而是渐变
+  */
+}
+
+/* 【知识点 11】伪类选择器 :hover
+   - 鼠标悬停时触发的样式 */
+.nav-list a:hover,
+.nav-list a.active {
+  background-color: #34495e;
+}
+
+/* ==================== 主要内容区 ==================== */
+main {
+  padding: 30px 0;
+}
+
+/* 【知识点 12】类选择器可以组合使用 */
+.hero {
+  text-align: center;        /* 文字居中 */
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  /*
+    【知识点 13】渐变背景
+    - linear-gradient(角度, 颜色1, 颜色2)
+    - 135deg：从左上到右下
+    - 创建漂亮的渐变效果
+  */
+  color: #fff;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  opacity: 0.9;              /* 略微透明，增加层次感 */
+}
+
+/* ==================== 内容区块 ==================== */
+.content-section {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+
+  /* 【知识点 14】阴影效果 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  /* 参数：X偏移 Y偏移 模糊半径 扩展半径 颜色 */
+}
+
+.content-section h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eee; /* 底部装饰线 */
+}
+
+/* 列表样式 */
+.topic-list {
+  list-style: none;
+  padding: 0;
+}
+
+.topic-list li {
+  padding: 8px 0;
+  padding-left: 25px;
+  position: relative;         /* 相对定位，为下面的 ::before 提供参考 */
+}
+
+.topic-list li::before {
+  /* 【知识点 15】::before 伪元素 - 在元素内容前插入内容 */
+  content: "✅";
+  position: absolute;
+  left: 0;
+}
+
+/* 【知识点 16】代码块样式 */
+pre {
+  background: #2d2d2d;       /* 深色背景 */
+  color: #f8f8f2;            /* 浅色文字 */
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: auto;          /* 横向滚动条（代码太长时） */
+  font-size: 0.9rem;
+}
+
+code {
+  font-family: "Fira Code", "Consolas", "Monaco", monospace;
+  /* 等宽字体，代码对齐更好看 */
+}
+
+/* ==================== 按钮样式 ==================== */
+
+/* 【知识点 17】按钮美化 */
+button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;              /* 去掉默认边框 */
+  padding: 12px 28px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;           /* 鼠标悬停时显示手型指针 */
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: 10px;
+}
+
+/* 【知识点 18】:active 伪类 - 鼠标按下时 */
+button:hover {
+  transform: translateY(-2px); /* 向上移动 2px，产生"浮起"效果 */
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+  transform: translateY(0);   /* 按下时回到原位 */
+}
+
+/* 问候语文字样式 */
+.greeting {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  color: #667eea;
+  font-weight: bold;
+  min-height: 1.6em;         /* 最小高度，防止没有内容时布局跳动 */
+  transition: opacity 0.3s;
+}
+
+/* ==================== 表单样式 ==================== */
+
+/* 【知识点 19】表单元素样式 */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;            /* 让 label 独占一行 */
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;       /* 继承父元素的字体 */
+  transition: border-color 0.3s;
+}
+
+/* 【知识点 20】:focus 伪类 - 元素获得焦点时（如点击输入框） */
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;             /* 去掉默认的蓝色轮廓 */
+  border-color: #667eea;     /* 换成自定义颜色 */
+}
+
+.form-group textarea {
+  resize: vertical;          /* 只允许垂直方向调整大小 */
+  min-height: 120px;
+}
+
+/* 提交结果提示 */
+.result-message {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 6px;
+  display: none;             /* 默认隐藏 */
+}
+
+.result-message.success {
+  display: block;
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+/* ==================== 关于页面特色 ==================== */
+
+/* 【知识点 21】卡片布局 */
+.card-grid {
+  display: grid;
+  /*
+    【知识点 22】CSS Grid 网格布局
+    - grid-template-columns：定义每列的宽度
+    - repeat(auto-fit, minmax(250px, 1fr))：
+      自动适应，每列最小 250px，最大等分剩余空间
+    - 这是一种"响应式"写法，不用媒体查询也能适配不同屏幕
+  */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;                 /* 网格项之间的间距 */
+  margin-top: 20px;
+}
+
+.card {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #667eea; /* 左侧彩色装饰条 */
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card h4 {
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+/* ==================== 页脚 ==================== */
+.site-footer {
+  background: #2c3e50;
+  color: #ecf0f1;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 30px;
+}
+
+/* ==================== 响应式适配 ==================== */
+
+/* 【知识点 23】媒体查询（Media Query）
+   - @media 表示"在某些条件下应用这些样式"
+   - (max-width: 600px)：当屏幕宽度 <= 600px 时
+   - 这就是"响应式设计"的核心：根据不同屏幕尺寸调整布局 */
+@media (max-width: 600px) {
+  .site-header .container {
+    flex-direction: column;  /* 改为垂直排列 */
+    gap: 10px;
+  }
+
+  .nav-list {
+    gap: 10px;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;       /* 手机上标题缩小 */
+  }
+
+  .content-section {
+    padding: 18px;
+  }
+}
