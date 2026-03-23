@@ -45,3 +45,24 @@ alias r2 := run-project-2
 
 run-project-2: build-project-2
     cd frontend-learning-project-2 && uv run python3 -m http.server 8080
+
+alias c3 := clear-project-3
+
+clear-project-3:
+    rm -rf frontend-learning-project-3/dist
+    rm -rf frontend-learning-project-3/node_modules/.vite
+
+alias b3 := build-project-3
+
+build-project-3: clear-project-3
+    cd frontend-learning-project-3 && npm run build
+
+alias r3 := run-project-3
+
+run-project-3:
+    cd frontend-learning-project-3 && npm run dev
+
+alias ca := clear-all
+
+# 清理全部项目
+clear-all: clear-project-2 clear-project-3

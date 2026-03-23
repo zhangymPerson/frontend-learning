@@ -1,0 +1,531 @@
+/**
+ * 全局样式
+ *
+ * Vue 3 的样式处理:
+ * 1. <style scoped> — 仅影响当前组件（CSS Modules 风格的隔离）
+ * 2. <style module> — 使用 CSS Modules
+ * 3. 全局样式 — 不加 scoped 的 style 标签或外部 CSS 文件
+ */
+
+/* ==================== 基础重置 ==================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background-color: #f5f7fa;
+}
+
+/* ==================== 布局 ==================== */
+.app {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-bar {
+    background: #2c3e50;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.nav-brand h1 {
+    color: #42b883;
+    font-size: 1.3rem;
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: background 0.2s;
+}
+
+.nav-links a:hover {
+    background: rgba(66, 184, 131, 0.2);
+}
+
+.nav-links a.active {
+    background: #42b883;
+    color: #fff;
+}
+
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.footer {
+    background: #2c3e50;
+    color: #95a5a6;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.85rem;
+}
+
+/* ==================== 页面和卡片 ==================== */
+.page h2 {
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    font-size: 1.8rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #42b883;
+    padding-bottom: 0.5rem;
+}
+
+.desc {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.desc code {
+    background: #f0f4f8;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #e74c3c;
+}
+
+.demo-area {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* ==================== 按钮 ==================== */
+button {
+    background: #42b883;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition:
+        background 0.2s,
+        transform 0.1s;
+}
+
+button:hover {
+    background: #38a373;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+button:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ==================== 输入框 ==================== */
+input[type="text"],
+input[type="number"] {
+    padding: 0.5rem 0.75rem;
+    border: 2px solid #e0e6ed;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #42b883;
+}
+
+/* ==================== 代码块 ==================== */
+.code-block {
+    background: #1e2a3a;
+    color: #a8d8a8;
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+}
+
+/* ==================== 日志列表 ==================== */
+.log-list {
+    list-style: none;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 0.5rem;
+}
+
+.log-list li {
+    padding: 0.4rem 0.75rem;
+    margin-bottom: 0.25rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-family: monospace;
+}
+
+.log-list li.parent {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.log-list li.child {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.log-list li.info {
+    background: #f5f5f5;
+    color: #555;
+}
+
+/* ==================== 标签 ==================== */
+.tag-green,
+.tag-gray,
+.tag-blue,
+.tag-orange {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    margin-left: 0.25rem;
+}
+
+.tag-green {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+.tag-gray {
+    background: #f5f5f5;
+    color: #757575;
+}
+.tag-blue {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+.tag-orange {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+/* ==================== 子组件样式 ==================== */
+.child-component,
+.lifecycle-child,
+.injected-child,
+.slot-demo {
+    background: #f8f9fa;
+    border: 2px dashed #42b883;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.child-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+/* ==================== 自定义输入 ==================== */
+.custom-input {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.custom-input-field {
+    padding-right: 2rem;
+}
+
+.clear-btn {
+    position: absolute;
+    right: 4rem;
+    background: #e74c3c;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.char-count {
+    color: #95a5a6;
+    font-size: 0.8rem;
+}
+
+/* ==================== 插槽演示 ==================== */
+.slot-section {
+    padding: 0.75rem;
+    margin: 0.5rem 0;
+    border-radius: 6px;
+}
+
+.header-section {
+    background: #f0fff0;
+    border-left: 3px solid #42b883;
+}
+.default-section {
+    background: #f0f8ff;
+    border-left: 3px solid #3498db;
+}
+.footer-section {
+    background: #fff8f0;
+    border-left: 3px solid #e67e22;
+}
+
+.slot-label {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+/* ==================== 注入组件 ==================== */
+.injected-child.dark {
+    background: #2c3e50;
+    color: #ecf0f1;
+    border-color: #3498db;
+}
+
+/* ==================== 待办清单 ==================== */
+.add-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.todo-input {
+    flex: 1;
+    padding: 0.6rem 0.8rem;
+}
+
+.filter-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.filter-bar button {
+    background: #ecf0f1;
+    color: #2c3e50;
+}
+
+.filter-bar button.active {
+    background: #42b883;
+    color: #fff;
+}
+
+.stats {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #ecf0f1;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #42b883, #38a373);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.todo-list {
+    list-style: none;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: #95a5a6;
+}
+
+.todo-text {
+    flex: 1;
+}
+
+.todo-date {
+    color: #95a5a6;
+    font-size: 0.8rem;
+}
+
+.delete-btn {
+    background: #e74c3c;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+}
+
+.empty-tip {
+    color: #95a5a6;
+    text-align: center;
+    padding: 2rem;
+}
+
+.batch-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* ==================== 动画 ==================== */
+.list-enter-active,
+.list-leave-active {
+    transition: all 0.3s ease;
+}
+
+.list-enter-from {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.list-leave-to {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+/* ==================== 对比表格 ==================== */
+.compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.compare-table th,
+.compare-table td {
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e6ed;
+}
+
+.compare-table th {
+    background: #f5f7fa;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.compare-table tr:hover {
+    background: #f8f9fa;
+}
+
+/* ==================== 计数器展示 ==================== */
+.counter-display {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.big-num {
+    font-size: 2.5rem;
+    color: #42b883;
+}
+
+.counter-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.history-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+}
+
+.history-item {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-family: monospace;
+}
+
+/* ==================== 动态盒子 ==================== */
+.dynamic-box {
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    margin: 0.5rem 0;
+}
+
+.loading {
+    color: #42b883;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.log {
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    background: #f5f7fa;
+    padding: 0.5rem;
+    border-radius: 4px;
+}
