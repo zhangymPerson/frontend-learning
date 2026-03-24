@@ -24,13 +24,13 @@ fetch:
 alias p := pull
 
 # 从 origin 拉取 main 分支
-pull:
+pull: fetch
     git pull origin main
 
 alias pu := push
 
 # 推送 main 分支到 origin, gitcode, gitee 远程仓库
-push:
+push: pull
     git push origin main
     git push gitcode main
     git push gitee main
