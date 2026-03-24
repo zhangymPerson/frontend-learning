@@ -3,6 +3,7 @@
 set unstable := true
 
 default:
+    just --fmt
     just --list
 
 run:
