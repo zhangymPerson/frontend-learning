@@ -3,6 +3,9 @@
 set unstable := true
 
 default:
+    just --list
+
+run:
     just $(just --list | gum filter --no-limit | awk '{print $1}')
 
 alias r1 := run-project-1
