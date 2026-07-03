@@ -6,11 +6,11 @@
 
 这是一个前端学习教程仓库，包含三个渐进式学习项目：
 
-| 项目 | 技术栈 | 学习目标 |
-|------|--------|----------|
-| `frontend-learning-project-1/` | 纯 HTML + CSS + JavaScript | 前端基础（无框架、无构建工具） |
-| `frontend-learning-project-2/` | HTML + CSS + TypeScript | TypeScript 类型系统 |
-| `frontend-learning-project-3/` | Vue 3 + TypeScript + Vite + Pinia + Vue Router | Vue 3 Composition API |
+| 项目                           | 技术栈                                         | 学习目标                       |
+| ------------------------------ | ---------------------------------------------- | ------------------------------ |
+| `frontend-learning-project-1/` | 纯 HTML + CSS + JavaScript                     | 前端基础（无框架、无构建工具） |
+| `frontend-learning-project-2/` | HTML + CSS + TypeScript                        | TypeScript 类型系统            |
+| `frontend-learning-project-3/` | Vue 3 + TypeScript + Vite + Pinia + Vue Router | Vue 3 Composition API          |
 
 **核心特点**：所有源代码文件都包含大量详细注释，用于教学目的。修改代码时保持注释风格一致。
 
@@ -69,6 +69,7 @@ uv run python3 -m http.server 8080
 ```
 
 **重要**：
+
 - 源码在 `ts/` 目录，编译输出到 `js/` 目录
 - **不要直接编辑 `js/` 目录下的文件**，它们由 `tsc` 自动生成
 - 修改 TypeScript 后必须重新编译才能看到效果
@@ -166,6 +167,7 @@ frontend-learning-project-3/
 ```
 
 **修改代码时**：
+
 - 保持现有注释风格
 - 如果添加新的重要概念，添加对应的知识点注释
 - 注释使用中文，与项目风格一致
@@ -173,6 +175,7 @@ frontend-learning-project-3/
 ### TypeScript 配置
 
 项目 2 (`tsconfig.json`):
+
 - `target: "ES2020"` - 编译目标
 - `outDir: "./js"` - 输出到 js 目录
 - `rootDir: "./ts"` - 源码在 ts 目录
@@ -180,6 +183,7 @@ frontend-learning-project-3/
 - `sourceMap: true` - 生成 source map
 
 项目 3 (`tsconfig.json`):
+
 - `noEmit: true` - 不输出 JS（由 Vite 处理）
 - `paths: { "@/*": ["./src/*"] }` - 路径别名
 
@@ -196,7 +200,7 @@ import { ref, reactive, computed, onMounted } from "vue";
 const count = ref(0);
 
 // reactive 用于对象
-const user = reactive({ name: '' });
+const user = reactive({ name: "" });
 
 // 模板引用
 const inputRef = ref<HTMLInputElement | null>(null);
@@ -204,12 +208,13 @@ const inputRef = ref<HTMLInputElement | null>(null);
 ```
 
 **关键约定**：
+
 - 使用 `<script setup lang="ts">` 语法
 - `ref` 用于基本类型，`reactive` 用于对象
 - 使用基于类型的 props/emits 声明：
   ```typescript
   defineProps<{ message: string }>();
-  defineEmits<{ 'update:message': [value: string] }>();
+  defineEmits<{ "update:message": [value: string] }>();
   ```
 - 路由使用懒加载：`() => import('@/views/xxx.vue')`
 - 路径别名：`@` 映射到 `src/`
@@ -229,6 +234,7 @@ ts/*.ts → tsc 编译 → js/*.js
 ```
 
 运行 `tsc` 时：
+
 1. 读取 `tsconfig.json`
 2. 编译 `ts/` 目录下的所有 `.ts` 文件
 3. 输出到 `js/` 目录
@@ -241,6 +247,7 @@ src/ → vue-tsc 类型检查 → vite build → dist/
 ```
 
 `npm run build` 执行：
+
 1. `vue-tsc --noEmit` - 类型检查（不输出文件）
 2. `vite build` - 打包构建
 3. 输出到 `dist/` 目录
