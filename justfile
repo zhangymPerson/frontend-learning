@@ -69,10 +69,27 @@ run-project-3:
     @echo "本地访问地址: http://localhost:3000"
     cd frontend-learning-project-3 && npm run dev
 
+alias c4 := clear-project-4
+
+clear-project-4:
+    rm -rf frontend-learning-project-4/dist
+    rm -rf frontend-learning-project-4/node_modules/.vite
+
+alias b4 := build-project-4
+
+build-project-4: clear-project-4
+    cd frontend-learning-project-4 && npm run build
+
+alias r4 := run-project-4
+
+run-project-4:
+    @echo "本地访问地址: http://localhost:3001"
+    cd frontend-learning-project-4 && npm run dev
+
 alias ca := clear-all
 
 # 清理全部项目
-clear-all: clear-project-2 clear-project-3
+clear-all: clear-project-2 clear-project-3 clear-project-4
 
 alias fmt := format
 
