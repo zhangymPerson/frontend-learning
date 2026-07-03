@@ -16,7 +16,6 @@
   - 推荐：定义对象用 interface，其他场景用 type
   ============================================================ */
 
-
 /* ============================================================
    【知识点 3】interface - 接口（最核心的 TS 特性之一）
 
@@ -76,7 +75,6 @@ export interface ValidationResult {
   errorMessage: string;
 }
 
-
 /* ============================================================
    【知识点 4】type - 类型别名
 
@@ -92,13 +90,13 @@ export interface ValidationResult {
  * - "red" | "blue" 表示只能是 "red" 或 "blue"
  * - 这种限制值范围的写法叫"字面量类型"
  */
-export type ThemeColor = '#667eea' | '#764ba2' | '#f093fb' | '#f5576c';
+export type ThemeColor = "#667eea" | "#764ba2" | "#f093fb" | "#f5576c";
 
 /**
  * 消息类型
  * 区分成功和错误的消息
  */
-export type MessageType = 'success' | 'error';
+export type MessageType = "success" | "error";
 
 /**
  * 问候消息接口
@@ -111,7 +109,6 @@ export interface GreetingMessage {
   /** 消息类型 */
   type: MessageType;
 }
-
 
 /* ============================================================
    【知识点 6】枚举（Enum）
@@ -130,11 +127,11 @@ export interface GreetingMessage {
  */
 export enum PagePath {
   /** 首页 */
-  Home = 'index.html',
+  Home = "index.html",
 
   /** 关于页面 */
-  About = 'pages/about.html',
+  About = "pages/about.html",
 
   /** 联系页面 */
-  Contact = 'pages/contact.html',
+  Contact = "pages/contact.html",
 }

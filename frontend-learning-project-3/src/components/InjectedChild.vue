@@ -1,18 +1,18 @@
 <template>
-    <!--
+  <!--
     注入组件 — demonstrate provide/inject
 
     provide/inject 用于跨层级组件通信:
     祖先组件 provide → 中间组件（不需要传递） → 后代组件 inject
   -->
-    <div class="injected-child" :class="theme">
-        <h4>🌱 后代注入组件</h4>
-        <p>
-            注入的 theme: <strong>{{ theme }}</strong>
-        </p>
-        <p>当前样式: {{ theme === "dark" ? "🌙 深色模式" : "☀️ 浅色模式" }}</p>
-        <button @click="toggleTheme">在子组件中切换主题</button>
-    </div>
+  <div class="injected-child" :class="theme">
+    <h4>🌱 后代注入组件</h4>
+    <p>
+      注入的 theme: <strong>{{ theme }}</strong>
+    </p>
+    <p>当前样式: {{ theme === "dark" ? "🌙 深色模式" : "☀️ 浅色模式" }}</p>
+    <button @click="toggleTheme">在子组件中切换主题</button>
+  </div>
 </template>
 
 <script setup lang="ts">

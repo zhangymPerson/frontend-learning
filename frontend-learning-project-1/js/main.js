@@ -15,7 +15,6 @@
   3. 外部：<script src="js/main.js"></script> ← 我们用这种方式
   ============================================================ */
 
-
 /* ============================================================
    【知识点 3】变量声明 - let 和 const
 
@@ -25,9 +24,8 @@
 
    建议：默认用 const，需要改变时才用 let
    ============================================================ */
-const projectName = "前端学习项目1";  // 这个值不会变，用 const
-let clickCount = 0;                    // 这个值会变（每次点击+1），用 let
-
+const projectName = "前端学习项目1"; // 这个值不会变，用 const
+let clickCount = 0; // 这个值会变（每次点击+1），用 let
 
 /* ============================================================
    【知识点 4】函数（Function）
@@ -54,7 +52,7 @@ function sayHello() {
     - document.getElementById('id') → 通过 id 找到页面上的元素
     - 找到后可以读取或修改它的内容、样式等
   */
-  const greetingEl = document.getElementById('greetingText');
+  const greetingEl = document.getElementById("greetingText");
 
   // 【知识点 6】++ 运算符 - 变量自增 1
   clickCount++;
@@ -72,13 +70,14 @@ function sayHello() {
     "又见面了！你越来越熟练了！💪",
     "你已经点击了很多次了，好奇心很强哦！🔍",
     "继续探索吧，前端世界很精彩！✨",
-    "你是个有毅力的学习者！🏆"
+    "你是个有毅力的学习者！🏆",
   ];
 
   // 【知识点 8】三元运算符 - 简化版 if-else
   // 条件 ? 值1 : 值2
   // 如果 clickCount > messages.length 就用最后一条，否则用对应的消息
-  const index = clickCount > messages.length ? messages.length - 1 : clickCount - 1;
+  const index =
+    clickCount > messages.length ? messages.length - 1 : clickCount - 1;
   const message = messages[index];
 
   // 【知识点 9】修改元素的文本内容
@@ -89,9 +88,9 @@ function sayHello() {
   // 【知识点 10】修改元素的样式
   // element.style.属性名 = '值'
   // 注意：CSS 中的 background-color 在 JS 里写成 backgroundColor（驼峰命名）
-  greetingEl.style.opacity = '0';
+  greetingEl.style.opacity = "0";
   setTimeout(() => {
-    greetingEl.style.opacity = '1';
+    greetingEl.style.opacity = "1";
   }, 50);
   /*
     【知识点 11】setTimeout - 延时执行
@@ -100,7 +99,6 @@ function sayHello() {
     - 配合 CSS 的 transition，产生淡入效果
   */
 }
-
 
 /* ============================================================
    【知识点 12】addEventListener - 事件监听（更规范的写法）
@@ -120,7 +118,7 @@ function sayHello() {
    ============================================================ */
 
 // 这个代码块只在联系页面（有 contactForm 时）才执行
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   /*
     【知识点 13】DOMContentLoaded 事件
     - 当 HTML 文档被完全加载和解析完成后触发
@@ -129,29 +127,28 @@ document.addEventListener('DOMContentLoaded', function() {
   */
 
   // 尝试获取联系表单（只有联系页面才有）
-  const contactForm = document.getElementById('contactForm');
+  const contactForm = document.getElementById("contactForm");
 
   // 【知识点 14】条件判断 - if 语句
   // 如果找不到 contactForm（在首页或关于页面），contactForm 就是 null
   // null 在条件中被视为 false，所以不会执行里面的代码
   if (contactForm) {
-
     /*
       【知识点 15】表单提交事件处理
       - form 的 submit 事件在点击提交按钮时触发
       - event.preventDefault() 阻止表单的默认行为（刷新页面）
       - 这样我们就可以用 JS 自己处理表单数据
     */
-    contactForm.addEventListener('submit', function(event) {
-      event.preventDefault();  // 阻止默认的页面刷新
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault(); // 阻止默认的页面刷新
 
       // 【知识点 16】获取表单输入值
-      const nameInput = document.getElementById('nameInput');
-      const emailInput = document.getElementById('emailInput');
-      const messageInput = document.getElementById('messageInput');
+      const nameInput = document.getElementById("nameInput");
+      const emailInput = document.getElementById("emailInput");
+      const messageInput = document.getElementById("messageInput");
 
-      const name = nameInput.value.trim();    // .value 获取输入框的值
-      const email = emailInput.value.trim();  // .trim() 去掉前后空格
+      const name = nameInput.value.trim(); // .value 获取输入框的值
+      const email = emailInput.value.trim(); // .trim() 去掉前后空格
       const message = messageInput.value.trim();
 
       /*
@@ -161,8 +158,8 @@ document.addEventListener('DOMContentLoaded', function() {
       */
       if (!name || !email || !message) {
         // 【知识点 18】alert() - 弹出警告框（简单但体验不好，后面可以学更好的方式）
-        alert('请填写所有字段！');
-        return;  // return 提前结束函数，不再往下执行
+        alert("请填写所有字段！");
+        return; // return 提前结束函数，不再往下执行
       }
 
       // 简单的邮箱格式检查
@@ -171,14 +168,14 @@ document.addEventListener('DOMContentLoaded', function() {
       // .test(字符串) 返回 true 或 false
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
-        alert('请输入有效的邮箱地址！');
+        alert("请输入有效的邮箱地址！");
         return;
       }
 
       // 【知识点 20】在页面上显示结果（比 alert 更好的体验）
-      const resultEl = document.getElementById('resultMessage');
+      const resultEl = document.getElementById("resultMessage");
       resultEl.textContent = `✅ 谢谢 ${name}！你的消息已收到。（邮箱：${email}）`;
-      resultEl.classList.add('success');
+      resultEl.classList.add("success");
       /*
         【知识点 21】classList - 操作元素的 CSS 类
         - classList.add('类名') → 添加一个类
@@ -194,11 +191,10 @@ document.addEventListener('DOMContentLoaded', function() {
       // 打印到控制台（开发者调试用）
       // 【知识点 23】console.log() - 在浏览器控制台输出信息
       // 打开浏览器开发者工具（F12）→ Console 标签页可以看到
-      console.log('表单提交：', { name, email, message });
+      console.log("表单提交：", { name, email, message });
     });
   }
 });
-
 
 /* ============================================================
    【知识点 24】数据类型基础
@@ -220,25 +216,25 @@ const pageInfo = {
   name: "前端学习项目1",
   version: "1.0.0",
   author: "学习者",
-  pages: ["首页", "关于", "联系"],  // 对象里可以包含数组
-  isPublished: true
+  pages: ["首页", "关于", "联系"], // 对象里可以包含数组
+  isPublished: true,
 };
 
 // 【知识点 26】访问对象属性
 // 点号：pageInfo.name
 // 方括号：pageInfo['name']（属性名是变量时用这种方式）
-console.log('项目信息:', pageInfo.name, 'v' + pageInfo.version);
+console.log("项目信息:", pageInfo.name, "v" + pageInfo.version);
 
 // 【知识点 27】数组（Array）- 有序的元素集合
-const colors = ['#667eea', '#764ba2', '#f093fb', '#f5576c'];
+const colors = ["#667eea", "#764ba2", "#f093fb", "#f5576c"];
 
 // 数组常用方法：
-console.log('颜色数量:', colors.length);      // .length 数组长度
-console.log('第一个颜色:', colors[0]);         // [0] 取第一个元素（下标从0开始）
-console.log('是否有紫色:', colors.includes('#764ba2')); // .includes() 是否包含
+console.log("颜色数量:", colors.length); // .length 数组长度
+console.log("第一个颜色:", colors[0]); // [0] 取第一个元素（下标从0开始）
+console.log("是否有紫色:", colors.includes("#764ba2")); // .includes() 是否包含
 
 // 【知识点 28】遍历数组 - forEach
-colors.forEach(function(color, index) {
+colors.forEach(function (color, index) {
   // forEach 对数组每个元素执行一次回调函数
   // color 是当前元素，index 是下标
   console.log(`颜色 ${index + 1}: ${color}`);
@@ -246,7 +242,6 @@ colors.forEach(function(color, index) {
 
 // 箭头函数写法更简洁：
 // colors.forEach((color, index) => console.log(`颜色 ${index + 1}: ${color}`));
-
 
 /* ============================================================
    【知识点 29】控制台输出调试技巧
@@ -263,5 +258,10 @@ colors.forEach(function(color, index) {
    - console.table() → 表格形式展示数组/对象
    - console.time()  → 计时（性能测试用）
    ============================================================ */
-console.log('%c🎓 前端学习项目1 已加载完成！', 'color: #667eea; font-size: 16px; font-weight: bold;');
-console.log('💡 提示：打开这个文件（js/main.js），里面的注释就是你的学习笔记！');
+console.log(
+  "%c🎓 前端学习项目1 已加载完成！",
+  "color: #667eea; font-size: 16px; font-weight: bold;",
+);
+console.log(
+  "💡 提示：打开这个文件（js/main.js），里面的注释就是你的学习笔记！",
+);

@@ -13,6 +13,7 @@ alias r1 := run-project-1
 
 # 运行前端项目1
 run-project-1:
+    @echo "本地访问地址: http://localhost:8080"
     cd frontend-learning-project-1 && uv run python3 -m http.server 8080
 
 alias f := fetch
@@ -48,6 +49,7 @@ build-project-2: clear-project-2
 alias r2 := run-project-2
 
 run-project-2: build-project-2
+    @echo "本地访问地址: http://localhost:8080"
     cd frontend-learning-project-2 && uv run python3 -m http.server 8080
 
 alias c3 := clear-project-3
@@ -64,12 +66,19 @@ build-project-3: clear-project-3
 alias r3 := run-project-3
 
 run-project-3:
+    @echo "本地访问地址: http://localhost:3000"
     cd frontend-learning-project-3 && npm run dev
 
 alias ca := clear-all
 
 # 清理全部项目
 clear-all: clear-project-2 clear-project-3
+
+alias fmt := format
+
+# 使用 Prettier 格式化代码
+format:
+    npx prettier --write .
 
 # 创建 tmux 窗口
 tmux:

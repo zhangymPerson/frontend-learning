@@ -1,5 +1,5 @@
 <template>
-    <!--
+  <!--
     自定义输入组件 — v-model 实现
 
     v-model 的底层实现:
@@ -10,28 +10,25 @@
     1. 接收 modelValue prop
     2. 触发 update:modelValue 事件
   -->
-    <div class="custom-input">
-        <input
-            :value="modelValue"
-            :placeholder="placeholder"
-            type="text"
-            class="custom-input-field"
-            @input="
-                $emit(
-                    'update:modelValue',
-                    ($event.target as HTMLInputElement).value,
-                )
-            "
-        />
-        <button
-            v-if="modelValue"
-            class="clear-btn"
-            @click="$emit('update:modelValue', '')"
-        >
-            ✕
-        </button>
-        <span class="char-count">{{ modelValue.length }} 字符</span>
-    </div>
+  <div class="custom-input">
+    <input
+      :value="modelValue"
+      :placeholder="placeholder"
+      type="text"
+      class="custom-input-field"
+      @input="
+        $emit('update:modelValue', ($event.target as HTMLInputElement).value)
+      "
+    />
+    <button
+      v-if="modelValue"
+      class="clear-btn"
+      @click="$emit('update:modelValue', '')"
+    >
+      ✕
+    </button>
+    <span class="char-count">{{ modelValue.length }} 字符</span>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -45,10 +42,10 @@
  *   例如: v-model:title → prop: title, event: update:title
  */
 defineProps<{
-    /** 当前绑定的值（v-model 传入） */
-    modelValue: string;
-    /** 输入框占位文本 */
-    placeholder?: string;
+  /** 当前绑定的值（v-model 传入） */
+  modelValue: string;
+  /** 输入框占位文本 */
+  placeholder?: string;
 }>();
 
 /**
@@ -57,6 +54,6 @@ defineProps<{
  * 当子组件触发这个事件时，父组件的 v-model 绑定值会自动更新
  */
 defineEmits<{
-    "update:modelValue": [value: string];
+  "update:modelValue": [value: string];
 }>();
 </script>

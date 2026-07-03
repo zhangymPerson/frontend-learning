@@ -407,12 +407,13 @@ type ReadonlyUser = {
 > - 类型运算：`type Readonly<T> = { readonly [K in keyof T]: T[K] }`
 >
 > **类比记忆**：
-> | 场景 | Java 做法 | TS 做法 |
-> |------|-----------|---------|
-> | 定义数据结构 | `interface` / `record` / `class` | `interface` 或 `type` |
-> | 多态（类型 A 或 B） | sealed interface + 模式匹配 | `type X = A \| B`（联合类型） |
-> | 组合多个接口 | `extends A, B` | `interface X extends A, B` 或 `type X = A & B` |
-> | 给类型起别名 | 不存在 | `type ID = number \| string` |
+>
+> | 场景                | Java 做法                        | TS 做法                                        |
+> | ------------------- | -------------------------------- | ---------------------------------------------- |
+> | 定义数据结构        | `interface` / `record` / `class` | `interface` 或 `type`                          |
+> | 多态（类型 A 或 B） | sealed interface + 模式匹配      | `type X = A \| B`（联合类型）                  |
+> | 组合多个接口        | `extends A, B`                   | `interface X extends A, B` 或 `type X = A & B` |
+> | 给类型起别名        | 不存在                           | `type ID = number \| string`                   |
 
 **经验法则：**
 

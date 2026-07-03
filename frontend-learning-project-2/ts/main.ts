@@ -24,7 +24,11 @@
   - import { 接口名 } from '路径' → 导入指定的导出项
   - 注意：编译后这些 import 会被去掉（因为不是 ES Module 模式）
 */
-import type { ContactFormData, ValidationResult, ProjectInfo } from './types.js';
+import type {
+  ContactFormData,
+  ValidationResult,
+  ProjectInfo,
+} from "./types.js";
 
 /*
   【知识点 4】import type - 只导入类型
@@ -33,7 +37,6 @@ import type { ContactFormData, ValidationResult, ProjectInfo } from './types.js'
   - 比普通 import 更高效（因为类型只是给编译器看的）
   - 当你只用某个接口做类型标注时，用 import type
 */
-
 
 /* ============================================================
    【知识点 5】类型标注（Type Annotation）
@@ -55,7 +58,6 @@ const PROJECT_NAME: string = "前端学习项目2";
 /** 点击次数（变量，会变化） */
 let clickCount: number = 0;
 
-
 /* ============================================================
    【知识点 6】项目信息对象
 
@@ -71,7 +73,6 @@ const pageInfo: ProjectInfo = {
   pages: ["首页", "关于", "联系"],
   isPublished: true,
 };
-
 
 /* ============================================================
    【知识点 7】函数类型标注
@@ -100,15 +101,15 @@ const sayHello = (): void => {
     - TS 知道它返回 HTMLElement | null
     - 你不需要手动标注，但理解推断结果很重要
   */
-  const greetingEl = document.getElementById('greetingText');
+  const greetingEl = document.getElementById("greetingText");
 
   // 【知识点 10】空值检查（Null Check）
   // getElementById 可能找不到元素，返回 null
   // 如果不做检查直接用，运行时会报错
   // TypeScript 的 strict 模式会要求你处理这种情况
   if (!greetingEl) {
-    console.warn('找不到 greetingText 元素');
-    return;  // 提前返回，后面的代码不会执行
+    console.warn("找不到 greetingText 元素");
+    return; // 提前返回，后面的代码不会执行
   }
 
   clickCount++;
@@ -140,30 +141,29 @@ const sayHello = (): void => {
   // 【知识点 14】类型断言（Type Assertion）
   // HTMLElement 的 style 属性是 CSSStyleDeclaration 类型
   // TS 已经知道这些，不需要额外断言
-  greetingEl.style.opacity = '0';
+  greetingEl.style.opacity = "0";
   setTimeout((): void => {
     // 【知识点 15】setTimeout 的类型
     // setTimeout 返回 number 类型的定时器 ID
     // 如果不需要取消定时器，可以忽略返回值
     if (greetingEl) {
-      greetingEl.style.opacity = '1';
+      greetingEl.style.opacity = "1";
     }
   }, 50);
 };
-
 
 /* ============================================================
    【知识点 16】DOMContentLoaded 事件监听
    - 等 HTML 完全加载后再执行 JS
    - 这样能确保所有 DOM 元素都已存在
    ============================================================ */
-document.addEventListener('DOMContentLoaded', (): void => {
+document.addEventListener("DOMContentLoaded", (): void => {
   // 尝试获取联系表单
   // 【知识点 17】HTMLElement | null 联合类型
   // getElementById 返回 HTMLElement | null
   // | 就是联合类型："可能是 HTMLElement，也可能是 null"
   const contactForm: HTMLFormElement | null = document.getElementById(
-    'contactForm'
+    "contactForm",
   ) as HTMLFormElement | null;
 
   /*
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', (): void => {
     // 【知识点 19】表单提交事件的类型
     // Event 类型比较通用，SubmitEvent 更具体
     // 但 SubmitEvent 不是所有环境都支持，用 Event 更安全
-    contactForm.addEventListener('submit', (event: Event): void => {
+    contactForm.addEventListener("submit", (event: Event): void => {
       // 阻止表单默认提交行为（刷新页面）
       event.preventDefault();
 
@@ -210,11 +210,10 @@ document.addEventListener('DOMContentLoaded', (): void => {
       contactForm.reset();
 
       // 打印到控制台
-      console.log('表单提交：', formData);
+      console.log("表单提交：", formData);
     });
   }
 });
-
 
 /* ============================================================
    【知识点 20】提取函数 - 职责分离
@@ -239,10 +238,10 @@ const getFormData = (): ContactFormData => {
   // 【知识点 22】as HTMLInputElement 类型断言
   // <input> 元素是 HTMLInputElement 类型
   // 它有 .value 属性来获取输入值
-  const nameInput = document.getElementById('nameInput') as HTMLInputElement;
-  const emailInput = document.getElementById('emailInput') as HTMLInputElement;
+  const nameInput = document.getElementById("nameInput") as HTMLInputElement;
+  const emailInput = document.getElementById("emailInput") as HTMLInputElement;
   const messageInput = document.getElementById(
-    'messageInput'
+    "messageInput",
   ) as HTMLTextAreaElement;
 
   // 【知识点 23】trim() 去除首尾空格
@@ -253,7 +252,6 @@ const getFormData = (): ContactFormData => {
     message: messageInput.value.trim(),
   };
 };
-
 
 /**
  * 验证表单数据
@@ -275,7 +273,7 @@ const validateForm = (data: ContactFormData): ValidationResult => {
   if (!name || !email || !message) {
     return {
       isValid: false,
-      errorMessage: '请填写所有字段！',
+      errorMessage: "请填写所有字段！",
     };
   }
 
@@ -286,17 +284,16 @@ const validateForm = (data: ContactFormData): ValidationResult => {
   if (!emailRegex.test(email)) {
     return {
       isValid: false,
-      errorMessage: '请输入有效的邮箱地址！',
+      errorMessage: "请输入有效的邮箱地址！",
     };
   }
 
   // 所有验证通过
   return {
     isValid: true,
-    errorMessage: '',
+    errorMessage: "",
   };
 };
-
 
 /**
  * 在页面上显示提交成功的消息
@@ -309,10 +306,10 @@ const validateForm = (data: ContactFormData): ValidationResult => {
  * - `${变量}` 会自动调用变量的 toString() 方法
  */
 const showResultMessage = (name: string, email: string): void => {
-  const resultEl = document.getElementById('resultMessage');
+  const resultEl = document.getElementById("resultMessage");
 
   if (!resultEl) {
-    console.warn('找不到 resultMessage 元素');
+    console.warn("找不到 resultMessage 元素");
     return;
   }
 
@@ -322,9 +319,8 @@ const showResultMessage = (name: string, email: string): void => {
   // 【知识点 28】classList 操作
   // classList 是 DOMTokenList 类型
   // .add()、.remove()、.toggle()、.contains() 等方法
-  resultEl.classList.add('success');
+  resultEl.classList.add("success");
 };
-
 
 /* ============================================================
    【知识点 29】枚举（Enum）的使用
@@ -355,11 +351,10 @@ const isCurrentPage = (pagePath: string): boolean => {
 // console.log 可以接受任意类型和数量的参数
 console.log(
   `%c🎓 ${PROJECT_NAME} 已加载完成！`,
-  'color: #667eea; font-size: 16px; font-weight: bold;'
+  "color: #667eea; font-size: 16px; font-weight: bold;",
 );
-console.log('项目信息：', pageInfo);
-console.log('💡 提示：源码在 ts/ 目录，编译后输出到 js/ 目录');
-
+console.log("项目信息：", pageInfo);
+console.log("💡 提示：源码在 ts/ 目录，编译后输出到 js/ 目录");
 
 /* ============================================================
    【知识点 33】浏览器全局作用域

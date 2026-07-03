@@ -33,8 +33,8 @@
    - 用 * 选择器重置所有元素的默认样式，保证跨浏览器一致性
    ============================================================ */
 * {
-  margin: 0;           /* 外边距 = 0 */
-  padding: 0;          /* 内边距 = 0 */
+  margin: 0; /* 外边距 = 0 */
+  padding: 0; /* 内边距 = 0 */
   box-sizing: border-box;
   /*
     【知识点 5】box-sizing: border-box
@@ -51,9 +51,11 @@
    - color：文字颜色（可以用英文名、#十六进制、rgb() 等）
    ============================================================ */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans SC", sans-serif;
   line-height: 1.6;
-  color: #333;               /* 深灰色文字 */
+  color: #333; /* 深灰色文字 */
   background-color: #f5f5f5; /* 浅灰色背景 */
 }
 
@@ -74,32 +76,32 @@ body {
 /* 【知识点 8】背景色和文字颜色搭配 */
 .site-header {
   background-color: #2c3e50; /* 深蓝灰色 */
-  color: #fff;               /* 白色文字 */
+  color: #fff; /* 白色文字 */
   padding: 15px 0;
 }
 
 .site-header .container {
-  display: flex;             /* 弹性布局，让 logo 和导航水平排列 */
+  display: flex; /* 弹性布局，让 logo 和导航水平排列 */
   justify-content: space-between; /* 两端对齐 */
-  align-items: center;       /* 垂直居中 */
+  align-items: center; /* 垂直居中 */
 }
 
 .logo {
-  font-size: 1.4rem;         /* rem 是相对单位，相对于根元素(html)的字体大小 */
+  font-size: 1.4rem; /* rem 是相对单位，相对于根元素(html)的字体大小 */
 }
 
 /* 【知识点 9】导航列表样式 */
 .nav-list {
-  list-style: none;          /* 去掉 <ul> 默认的圆点 */
-  display: flex;             /* 让列表项水平排列 */
-  gap: 20px;                 /* 列表项之间的间距 */
+  list-style: none; /* 去掉 <ul> 默认的圆点 */
+  display: flex; /* 让列表项水平排列 */
+  gap: 20px; /* 列表项之间的间距 */
 }
 
 .nav-list a {
-  color: #ecf0f1;            /* 浅白色链接 */
-  text-decoration: none;     /* 去掉链接默认的下划线 */
+  color: #ecf0f1; /* 浅白色链接 */
+  text-decoration: none; /* 去掉链接默认的下划线 */
   padding: 5px 10px;
-  border-radius: 4px;        /* 圆角 */
+  border-radius: 4px; /* 圆角 */
   transition: background-color 0.3s;
   /*
     【知识点 10】transition 过渡动画
@@ -123,7 +125,7 @@ main {
 
 /* 【知识点 12】类选择器可以组合使用 */
 .hero {
-  text-align: center;        /* 文字居中 */
+  text-align: center; /* 文字居中 */
   padding: 40px 20px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   /*
@@ -144,7 +146,7 @@ main {
 
 .hero p {
   font-size: 1.1rem;
-  opacity: 0.9;              /* 略微透明，增加层次感 */
+  opacity: 0.9; /* 略微透明，增加层次感 */
 }
 
 /* ==================== 内容区块 ==================== */
@@ -175,7 +177,7 @@ main {
 .topic-list li {
   padding: 8px 0;
   padding-left: 25px;
-  position: relative;         /* 相对定位，为下面的 ::before 提供参考 */
+  position: relative; /* 相对定位，为下面的 ::before 提供参考 */
 }
 
 .topic-list li::before {
@@ -187,11 +189,11 @@ main {
 
 /* 【知识点 16】代码块样式 */
 pre {
-  background: #2d2d2d;       /* 深色背景 */
-  color: #f8f8f2;            /* 浅色文字 */
+  background: #2d2d2d; /* 深色背景 */
+  color: #f8f8f2; /* 浅色文字 */
   padding: 20px;
   border-radius: 8px;
-  overflow-x: auto;          /* 横向滚动条（代码太长时） */
+  overflow-x: auto; /* 横向滚动条（代码太长时） */
   font-size: 0.9rem;
 }
 
@@ -206,12 +208,14 @@ code {
 button {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #fff;
-  border: none;              /* 去掉默认边框 */
+  border: none; /* 去掉默认边框 */
   padding: 12px 28px;
   font-size: 1rem;
   border-radius: 6px;
-  cursor: pointer;           /* 鼠标悬停时显示手型指针 */
-  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer; /* 鼠标悬停时显示手型指针 */
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
   margin-top: 10px;
 }
 
@@ -222,7 +226,7 @@ button:hover {
 }
 
 button:active {
-  transform: translateY(0);   /* 按下时回到原位 */
+  transform: translateY(0); /* 按下时回到原位 */
 }
 
 /* 问候语文字样式 */
@@ -231,7 +235,7 @@ button:active {
   font-size: 1.2rem;
   color: #667eea;
   font-weight: bold;
-  min-height: 1.6em;         /* 最小高度，防止没有内容时布局跳动 */
+  min-height: 1.6em; /* 最小高度，防止没有内容时布局跳动 */
   transition: opacity 0.3s;
 }
 
@@ -243,7 +247,7 @@ button:active {
 }
 
 .form-group label {
-  display: block;            /* 让 label 独占一行 */
+  display: block; /* 让 label 独占一行 */
   margin-bottom: 6px;
   font-weight: bold;
   color: #555;
@@ -256,19 +260,19 @@ button:active {
   border: 2px solid #ddd;
   border-radius: 6px;
   font-size: 1rem;
-  font-family: inherit;       /* 继承父元素的字体 */
+  font-family: inherit; /* 继承父元素的字体 */
   transition: border-color 0.3s;
 }
 
 /* 【知识点 20】:focus 伪类 - 元素获得焦点时（如点击输入框） */
 .form-group input:focus,
 .form-group textarea:focus {
-  outline: none;             /* 去掉默认的蓝色轮廓 */
-  border-color: #667eea;     /* 换成自定义颜色 */
+  outline: none; /* 去掉默认的蓝色轮廓 */
+  border-color: #667eea; /* 换成自定义颜色 */
 }
 
 .form-group textarea {
-  resize: vertical;          /* 只允许垂直方向调整大小 */
+  resize: vertical; /* 只允许垂直方向调整大小 */
   min-height: 120px;
 }
 
@@ -277,7 +281,7 @@ button:active {
   margin-top: 15px;
   padding: 12px;
   border-radius: 6px;
-  display: none;             /* 默认隐藏 */
+  display: none; /* 默认隐藏 */
 }
 
 .result-message.success {
@@ -300,7 +304,7 @@ button:active {
     - 这是一种"响应式"写法，不用媒体查询也能适配不同屏幕
   */
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;                 /* 网格项之间的间距 */
+  gap: 20px; /* 网格项之间的间距 */
   margin-top: 20px;
 }
 
@@ -338,7 +342,7 @@ button:active {
    - 这就是"响应式设计"的核心：根据不同屏幕尺寸调整布局 */
 @media (max-width: 600px) {
   .site-header .container {
-    flex-direction: column;  /* 改为垂直排列 */
+    flex-direction: column; /* 改为垂直排列 */
     gap: 10px;
   }
 
@@ -347,7 +351,7 @@ button:active {
   }
 
   .hero h2 {
-    font-size: 1.5rem;       /* 手机上标题缩小 */
+    font-size: 1.5rem; /* 手机上标题缩小 */
   }
 
   .content-section {

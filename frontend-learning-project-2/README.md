@@ -36,6 +36,7 @@
 访问 [nodejs.org](https://nodejs.org/) 下载并安装（LTS 版本即可）。
 
 安装完成后验证：
+
 ```bash
 node --version   # 应该显示 v16 或更高
 npm --version    # 应该显示 8 或更高
@@ -119,39 +120,44 @@ tsc --watch
 
 ### 重点文件
 
-| 文件 | 内容 | 注释数 |
-|------|------|--------|
-| `ts/types.ts` | 类型定义 | 7 个知识点 |
-| `ts/main.ts` | 主逻辑 | 32 个知识点 |
+| 文件            | 内容     | 注释数      |
+| --------------- | -------- | ----------- |
+| `ts/types.ts`   | 类型定义 | 7 个知识点  |
+| `ts/main.ts`    | 主逻辑   | 32 个知识点 |
 | `tsconfig.json` | 编译配置 | 13 个知识点 |
 
 ### 练习建议
 
 #### 练习 1：故意写错类型
+
 ```typescript
 // 在 ts/main.ts 中试试：
-const count: number = "hello";  // 编译器会报错！
+const count: number = "hello"; // 编译器会报错！
 ```
+
 然后运行 `tsc` 看看错误信息。
 
 #### 练习 2：修改接口
+
 ```typescript
 // 在 ts/types.ts 中给 ContactFormData 加一个新字段：
 interface ContactFormData {
   name: string;
   email: string;
   message: string;
-  phone: string;  // 新增
+  phone: string; // 新增
 }
 ```
+
 然后运行 `tsc`，看看哪些地方报错了（因为使用方没有传 phone）。
 
 #### 练习 3：尝试类型推断
+
 ```typescript
 // 去掉类型标注，看看 TS 能否自动推断：
-const x = 42;           // TS 知道是 number
-const y = "hello";      // TS 知道是 string
-const z = x + y;        // 报错！number + string 在 TS 中需要显式处理
+const x = 42; // TS 知道是 number
+const y = "hello"; // TS 知道是 string
+const z = x + y; // 报错！number + string 在 TS 中需要显式处理
 ```
 
 ---
@@ -159,6 +165,7 @@ const z = x + y;        // 报错！number + string 在 TS 中需要显式处理
 ## 🎯 涵盖的 TypeScript 知识点
 
 ### 类型基础
+
 - [x] 基本类型标注（string、number、boolean）
 - [x] 数组类型（string[]、Array\<string\>）
 - [x] 联合类型（A | B）
@@ -167,12 +174,14 @@ const z = x + y;        // 报错！number + string 在 TS 中需要显式处理
 - [x] 类型推断
 
 ### 接口与类型
+
 - [x] interface 定义对象形状
 - [x] type 类型别名
 - [x] interface vs type 的区别
 - [x] 可选属性（?:）
 
 ### 高级特性
+
 - [x] 类型断言（as）
 - [x] 类型收窄（Type Narrowing）
 - [x] 枚举（enum）
@@ -180,12 +189,14 @@ const z = x + y;        // 报错！number + string 在 TS 中需要显式处理
 - [x] 解构赋值的类型
 
 ### DOM 类型
+
 - [x] HTMLElement | null 联合类型
 - [x] HTMLInputElement、HTMLFormElement
 - [x] CSSStyleDeclaration
 - [x] DOMTokenList（classList）
 
 ### 工程配置
+
 - [x] tsconfig.json 配置
 - [x] target、outDir、rootDir
 - [x] strict 模式
@@ -203,6 +214,7 @@ A: 需要重新运行 `tsc` 编译！或者用 `tsc --watch` 自动编译。
 
 **Q: 浏览器打开后 JS 不工作？**
 A: 检查 F12 控制台的错误信息。常见原因：
+
 - 没有编译（`js/main.js` 不存在或内容为空）
 - 文件路径不对
 

@@ -62,6 +62,7 @@ python -m SimpleHTTPServer 8080
 ### 第一步：看页面效果
 
 先在浏览器中打开每个页面，看看它们长什么样：
+
 - `index.html` — 首页
 - `pages/about.html` — 关于
 - `pages/contact.html` — 联系（试试提交表单！）
@@ -79,16 +80,19 @@ python -m SimpleHTTPServer 8080
 学习编程最重要的就是动手！试试以下练习：
 
 #### 练习 1：修改首页
+
 - 把 `<h2>` 里的欢迎文字改成你喜欢的
 - 换一个你喜欢的渐变颜色（搜 "CSS gradient generator"）
 - 给按钮加一个新的点击效果
 
 #### 练习 2：修改样式
+
 - 改变 `body` 的 `background-color`
 - 修改 `.hero` 的圆角大小
 - 给导航栏换个背景色
 
 #### 练习 3：修改 JavaScript
+
 - 在 `sayHello()` 函数里添加更多问候语
 - 改变点击按钮后问候语的颜色
 - 在控制台中尝试运行代码（F12 → Console）
@@ -97,12 +101,12 @@ python -m SimpleHTTPServer 8080
 
 按 **F12** 打开开发者工具：
 
-| 标签页 | 用途 |
-|--------|------|
-| **Elements** | 查看和实时修改 HTML/CSS |
-| **Console** | 查看 JavaScript 输出、运行代码 |
-| **Network** | 查看网络请求 |
-| **Sources** | 查看源文件、设置断点调试 |
+| 标签页       | 用途                           |
+| ------------ | ------------------------------ |
+| **Elements** | 查看和实时修改 HTML/CSS        |
+| **Console**  | 查看 JavaScript 输出、运行代码 |
+| **Network**  | 查看网络请求                   |
+| **Sources**  | 查看源文件、设置断点调试       |
 
 > 💡 在 Console 中输入 `sayHello()` 然后回车，可以直接调用函数！
 
@@ -111,6 +115,7 @@ python -m SimpleHTTPServer 8080
 ## 🎯 涵盖的知识点清单
 
 ### HTML 知识点
+
 - [x] DOCTYPE 声明
 - [x] html / head / body 基本结构
 - [x] meta 标签（charset、viewport）
@@ -127,6 +132,7 @@ python -m SimpleHTTPServer 8080
 - [x] HTML 实体（&copy; 等）
 
 ### CSS 知识点
+
 - [x] 选择器（元素、类、ID、后代、伪类、伪元素）
 - [x] 盒模型（margin、padding、border）
 - [x] box-sizing: border-box
@@ -140,6 +146,7 @@ python -m SimpleHTTPServer 8080
 - [x] 常用属性（display、position、overflow 等）
 
 ### JavaScript 知识点
+
 - [x] 变量声明（let、const）
 - [x] 数据类型（string、number、boolean、object、array）
 - [x] 函数（function 声明、箭头函数）
@@ -167,6 +174,7 @@ python -m SimpleHTTPServer 8080
 4. **工具链**：npm、Webpack/Vite、Git 版本控制
 
 推荐学习资源：
+
 - 📖 [MDN Web Docs](https://developer.mozilla.org/zh-CN/) — 最权威的前端文档
 - 🎮 [freeCodeCamp](https://www.freecodecamp.org/chinese) — 免费互动课程
 - 📺 [黑马程序员 Pink](https://www.bilibili.com/) — B站上有很多免费的前端教程
