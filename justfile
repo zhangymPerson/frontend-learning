@@ -4,17 +4,40 @@ set unstable
 
 default:
     just --fmt
+    just -f frontend-learning-project-1/frontend-learning-project-1.justfile --fmt
+    just -f frontend-learning-project-2/frontend-learning-project-2.justfile --fmt
+    just -f frontend-learning-project-3/frontend-learning-project-3.justfile --fmt
+    just -f frontend-learning-project-4/frontend-learning-project-4.justfile --fmt
+    just -f backend-learning-project/backend-learning-project.justfile --fmt
     just --list
 
-run:
-    just $(just --list | gum filter --no-limit | awk '{print $1}')
-
-alias r1 := run-project-1
-
-# 运行前端项目1
+# 运行前端项目 1 任务
 run-project-1:
-    @echo "本地访问地址: http://localhost:8080"
-    cd frontend-learning-project-1 && uv run python3 -m http.server 8080
+    just -f frontend-learning-project-1/frontend-learning-project-1.justfile --choose
+
+alias r2 := run-project-2
+
+# 运行前端项目 2 任务
+run-project-2:
+    just -f frontend-learning-project-2/frontend-learning-project-2.justfile --choose
+
+alias r3 := run-project-3
+
+# 运行前端项目 3 任务
+run-project-3:
+    just -f frontend-learning-project-3/frontend-learning-project-3.justfile --choose
+
+alias r4 := run-project-4
+
+# 运行前端项目 4 任务
+run-project-4:
+    just -f frontend-learning-project-4/frontend-learning-project-4.justfile --choose
+
+alias rb := run-backend
+
+# 运行后端项目任务
+run-backend:
+    just -f backend-learning-project/backend-learning-project.justfile --choose
 
 alias f := fetch
 
@@ -36,135 +59,14 @@ push: pull
     git push gitcode main
     git push gitee main
 
-alias c2 := clear-project-2
-
-clear-project-2:
-    rm -rf frontend-learning-project-2/js
-
-alias b2 := build-project-2
-
-build-project-2: clear-project-2
-    cd frontend-learning-project-2 && tsc
-
-alias r2 := run-project-2
-
-run-project-2: build-project-2
-    @echo "本地访问地址: http://localhost:8080"
-    cd frontend-learning-project-2 && uv run python3 -m http.server 8080
-
-alias c3 := clear-project-3
-
-clear-project-3:
-    rm -rf frontend-learning-project-3/dist
-    rm -rf frontend-learning-project-3/node_modules/.vite
-
-alias b3 := build-project-3
-
-build-project-3: clear-project-3
-    cd frontend-learning-project-3 && npm run build
-
-alias r3 := run-project-3
-
-run-project-3:
-    @echo "本地访问地址: http://localhost:3000"
-    cd frontend-learning-project-3 && npm run dev
-
-alias c4 := clear-project-4
-
-clear-project-4:
-    rm -rf frontend-learning-project-4/dist
-    rm -rf frontend-learning-project-4/node_modules/.vite
-
-alias b4 := build-project-4
-
-build-project-4: clear-project-4
-    cd frontend-learning-project-4 && npm run build
-
-alias r4 := run-project-4
-
-run-project-4:
-    @echo "本地访问地址: http://localhost:3001"
-    cd frontend-learning-project-4 && npm run dev
-
-alias bb := build-backend
-
-# 构建后端项目
-build-backend:
-    cd backend-learning-project && go build -ldflags "-X backend-learning-project/internal/version.Version=1.0.0 -X backend-learning-project/internal/version.CommitHash=$(git rev-parse --short HEAD) -X backend-learning-project/internal/version.BuildTime=$(date +%Y-%m-%dT%H:%M:%S%z)" -o server cmd/server/main.go
-
-alias rb := run-backend
-
-# 前台运行后端项目
-run-backend: build-backend
-    @echo "本地访问地址: http://localhost:8080"
-    cd backend-learning-project && ./server
-
-alias sb := start-backend
-
-# 后台启动后端项目
-start-backend: build-backend
-    #!/usr/bin/env sh
-    cd backend-learning-project
-    if [ -f .pid ] && kill -0 "$(cat .pid)" 2>/dev/null; then
-        echo "后端服务已在运行，PID: $(cat .pid)"
-        exit 0
-    fi
-    rm -f .pid
-    nohup ./server > server.log 2>&1 &
-    echo $! > .pid
-    echo "后端服务已启动，PID: $(cat .pid)，日志: backend-learning-project/server.log"
-
-alias kb := stop-backend
-
-# 停止后端项目
-stop-backend:
-    #!/usr/bin/env sh
-    cd backend-learning-project
-    if [ -f .pid ]; then
-        PID=$(cat .pid)
-        if kill -0 "$PID" 2>/dev/null; then
-            kill "$PID"
-            echo "已停止后端服务 PID: $PID"
-        else
-            echo "进程 $PID 不存在"
-        fi
-        rm -f .pid
-    else
-        # 未找到 PID 文件时，尝试按工作目录查找进程
-        PID=$(pgrep -f "./server")
-        if [ -n "$PID" ]; then
-            kill $PID
-            echo "已停止后端服务 PID: $PID"
-        else
-            echo "未找到 PID 文件，后端服务可能未启动"
-        fi
-    fi
-
-alias tb := test-backend
-
-# 运行后端项目测试
-test-backend:
-    cd backend-learning-project && go test ./...
-
-alias fb := format-backend
-
-# 格式化后端 Go 代码
-format-backend:
-    cd backend-learning-project && go fmt ./...
-
-alias cb := clear-backend
-
-# 清理后端项目生成文件
-clear-backend:
-    rm -f backend-learning-project/server
-    rm -f backend-learning-project/app.db
-    rm -f backend-learning-project/.pid
-    rm -f backend-learning-project/server.log
-
 alias ca := clear-all
 
 # 清理全部项目
-clear-all: clear-project-2 clear-project-3 clear-project-4 clear-backend
+clear-all:
+    just -f frontend-learning-project-2/frontend-learning-project-2.justfile clear-project-2
+    just -f frontend-learning-project-3/frontend-learning-project-3.justfile clear-project-3
+    just -f frontend-learning-project-4/frontend-learning-project-4.justfile clear-project-4
+    just -f backend-learning-project/backend-learning-project.justfile clear-backend
 
 alias fmt := format
 
