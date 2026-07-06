@@ -113,6 +113,9 @@ backend-learning-project/app.db
 backend-learning-project/.pid
 backend-learning-project/server.log
 
+# frontend-learning-project-2 编译输出
+frontend-learning-project-2/js/
+
 # Go test/build artifacts
 *.exe
 *.test
