@@ -4,13 +4,15 @@
 
 ## 项目概览
 
-这是一个前端学习教程仓库，包含三个渐进式学习项目：
+这是一个前端/后端学习教程仓库，包含多个渐进式学习项目：
 
 | 项目                           | 技术栈                                         | 学习目标                       |
 | ------------------------------ | ---------------------------------------------- | ------------------------------ |
 | `frontend-learning-project-1/` | 纯 HTML + CSS + JavaScript                     | 前端基础（无框架、无构建工具） |
 | `frontend-learning-project-2/` | HTML + CSS + TypeScript                        | TypeScript 类型系统            |
 | `frontend-learning-project-3/` | Vue 3 + TypeScript + Vite + Pinia + Vue Router | Vue 3 Composition API          |
+| `frontend-learning-project-4/` | React + TypeScript + Vite                      | React 基础                     |
+| `backend-learning-project/`    | Go + Gin + GORM + SQLite + JWT                 | 后端 RBAC 权限管理系统         |
 
 **核心特点**：所有源代码文件都包含大量详细注释，用于教学目的。修改代码时保持注释风格一致。
 
@@ -36,6 +38,19 @@ just c2         # 清理项目 2 编译输出
 just r3         # 别名: run-project-3
 just b3         # 构建项目 3
 just c3         # 清理项目 3
+
+# 运行项目 4（React）
+just r4         # 别名: run-project-4
+just b4         # 构建项目 4
+just c4         # 清理项目 4
+
+# 后端项目（Go + Gin + SQLite）
+just bb         # 构建后端项目
+just rb         # 前台运行后端项目（端口 8080）
+just sb         # 后台启动后端项目
+just kb         # 停止后端项目
+just tb         # 运行后端测试
+just cb         # 清理后端生成文件
 
 # 清理所有项目
 just clear-all
@@ -151,6 +166,52 @@ frontend-learning-project-3/
         ├── InjectedChild.vue
         └── LifecycleChild.vue
 ```
+
+### 后端项目结构
+
+```
+backend-learning-project/
+├── cmd/server/main.go              # 程序入口
+├── config/config.go                # 应用配置
+├── internal/
+│   ├── database/database.go        # 数据库连接、迁移、初始数据
+│   ├── handlers/                   # HTTP 处理器
+│   ├── middleware/auth.go          # JWT 认证 & RBAC 鉴权
+│   ├── models/models.go            # GORM 数据模型
+│   ├── repositories/               # 数据访问层
+│   ├── routes/routes.go            # 路由注册
+│   ├── services/                   # 业务逻辑层
+│   └── utils/utils.go              # 密码 & JWT 工具
+├── go.mod
+├── go.sum
+└── README.md
+```
+
+## 后端项目命令
+
+```bash
+cd backend-learning-project
+
+# 下载依赖
+go mod tidy
+
+# 编译
+go build -o server cmd/server/main.go
+
+# 前台运行
+./server
+
+# 运行测试
+go test ./...
+```
+
+**默认账号**：`admin` / `123456`
+
+**重要**：
+
+- 首次启动会自动创建 SQLite 数据库 `app.db` 并写入默认数据
+- 修改代码后需要重新编译才能生效
+- 使用 `just sb` / `just kb` 可方便地后台启停服务
 
 ## 代码风格与约定
 

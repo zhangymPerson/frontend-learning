@@ -107,6 +107,18 @@ dist
 # Docusaurus cache and generated files
 .docusaurus
 
+# backend-learning-project 生成产物
+backend-learning-project/server
+backend-learning-project/app.db
+backend-learning-project/.pid
+backend-learning-project/server.log
+
+# Go test/build artifacts
+*.exe
+*.test
+*.out
+/backend-learning-project/vendor/
+
 # Serverless directories
 .serverless/
 
