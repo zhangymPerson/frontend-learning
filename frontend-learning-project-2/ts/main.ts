@@ -367,5 +367,13 @@ console.log("💡 提示：源码在 ts/ 目录，编译后输出到 js/ 目录"
    - (window as any) 是类型断言，告诉 TS "我知道这样写"
    - 实际项目中会用 ES Module + import 的方式，更规范
    ============================================================ */
+// 【知识点 34】动态获取当前年份
+// new Date() 创建一个表示当前时间的日期对象
+// .getFullYear() 方法返回当前年份（四位数字，如 2026）
+const currentYearElement = document.getElementById("currentYear");
+if (currentYearElement) {
+  currentYearElement.textContent = new Date().getFullYear().toString();
+}
+
 (window as any).sayHello = sayHello;
 (window as any).isCurrentPage = isCurrentPage;

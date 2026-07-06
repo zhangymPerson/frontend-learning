@@ -258,6 +258,14 @@ colors.forEach(function (color, index) {
    - console.table() → 表格形式展示数组/对象
    - console.time()  → 计时（性能测试用）
    ============================================================ */
+// 【知识点 30】动态获取当前年份
+// new Date() 创建一个表示当前时间的日期对象
+// .getFullYear() 方法返回当前年份（四位数字，如 2026）
+const currentYearElement = document.getElementById("currentYear");
+if (currentYearElement) {
+  currentYearElement.textContent = new Date().getFullYear().toString();
+}
+
 console.log(
   "%c🎓 前端学习项目1 已加载完成！",
   "color: #667eea; font-size: 16px; font-weight: bold;",
