@@ -72,3 +72,9 @@ clear-backend:
     rm -f app.db
     rm -f .pid
     rm -f server.log
+
+alias sa := serve-api
+
+# 预览 OpenAPI 文档（端口 8081）
+serve-api:
+    npx @scalar/cli document serve openapi.yaml -p 8081

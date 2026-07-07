@@ -3,6 +3,7 @@ package main
 import (
 	"backend-learning-project/config"
 	"backend-learning-project/internal/database"
+	"backend-learning-project/internal/middleware"
 	"backend-learning-project/internal/routes"
 	"log"
 
@@ -22,6 +23,9 @@ func main() {
 
 	// 创建路由
 	r := gin.Default()
+
+	// 注册全局跨域中间件（必须在业务路由之前）
+	r.Use(middleware.CORS())
 
 	// 注册路由
 	routes.SetupRoutes(r, cfg)

@@ -2,15 +2,8 @@
 
 set unstable
 
-default:
-    just --fmt
-    just -f frontend-learning-project-1/frontend-learning-project-1.justfile --fmt
-    just -f frontend-learning-project-2/frontend-learning-project-2.justfile --fmt
-    just -f frontend-learning-project-3/frontend-learning-project-3.justfile --fmt
-    just -f frontend-learning-project-4/frontend-learning-project-4.justfile --fmt
-    just -f frontend-learning-project-5/frontend-learning-project-5.justfile --fmt
-    just -f backend-learning-project/backend-learning-project.justfile --fmt
-    just --list
+default: format
+    echo "默认格式化"
 
 # 运行前端项目 1 任务
 run-project-1:
@@ -80,6 +73,13 @@ alias fmt := format
 
 # 格式化前端项目代码
 format:
+    just --fmt
+    just -f frontend-learning-project-1/frontend-learning-project-1.justfile --fmt
+    just -f frontend-learning-project-2/frontend-learning-project-2.justfile --fmt
+    just -f frontend-learning-project-3/frontend-learning-project-3.justfile --fmt
+    just -f frontend-learning-project-4/frontend-learning-project-4.justfile --fmt
+    just -f frontend-learning-project-5/frontend-learning-project-5.justfile --fmt
+    just -f backend-learning-project/backend-learning-project.justfile --fmt
     npx prettier --write .
 
 # 创建 tmux 窗口
