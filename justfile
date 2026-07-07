@@ -8,6 +8,7 @@ default:
     just -f frontend-learning-project-2/frontend-learning-project-2.justfile --fmt
     just -f frontend-learning-project-3/frontend-learning-project-3.justfile --fmt
     just -f frontend-learning-project-4/frontend-learning-project-4.justfile --fmt
+    just -f frontend-learning-project-5/frontend-learning-project-5.justfile --fmt
     just -f backend-learning-project/backend-learning-project.justfile --fmt
     just --list
 
@@ -32,6 +33,12 @@ alias r4 := run-project-4
 # 运行前端项目 4 任务
 run-project-4:
     just -f frontend-learning-project-4/frontend-learning-project-4.justfile --choose
+
+alias r5 := run-project-5
+
+# 运行前端项目 5 任务
+run-project-5:
+    just -f frontend-learning-project-5/frontend-learning-project-5.justfile --choose
 
 alias rb := run-backend
 
@@ -66,6 +73,7 @@ clear-all:
     just -f frontend-learning-project-2/frontend-learning-project-2.justfile clear-project-2
     just -f frontend-learning-project-3/frontend-learning-project-3.justfile clear-project-3
     just -f frontend-learning-project-4/frontend-learning-project-4.justfile clear-project-4
+    just -f frontend-learning-project-5/frontend-learning-project-5.justfile clear-project-5
     just -f backend-learning-project/backend-learning-project.justfile clear-backend
 
 alias fmt := format

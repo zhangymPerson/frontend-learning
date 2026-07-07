@@ -1,0 +1,28 @@
+/*
+  【知识点 23】登录页面样式
+  - 使用 Flexbox 实现页面居中
+  - 卡片阴影和圆角提升视觉效果
+*/
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* 登录页背景色 */
+  background: #f0f2f5;
+}
+
+.login-card {
+  width: 400px;
+  max-width: 90%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-tips {
+  text-align: center;
+  color: #999;
+  font-size: 14px;
+  margin-top: 16px;
+}
