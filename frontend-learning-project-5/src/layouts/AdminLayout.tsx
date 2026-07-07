@@ -10,6 +10,7 @@ import {
   DashboardOutlined,
   UserOutlined,
   LogoutOutlined,
+  AppstoreOutlined,
 } from "@ant-design/icons";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../App";
@@ -48,6 +49,11 @@ function AdminLayout() {
       key: "/admin/users",
       icon: <UserOutlined />,
       label: "用户管理",
+    },
+    {
+      key: "/admin/menus",
+      icon: <AppstoreOutlined />,
+      label: "菜单管理",
     },
   ];
 

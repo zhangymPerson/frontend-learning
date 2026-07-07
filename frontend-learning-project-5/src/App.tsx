@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import AdminLayout from "./layouts/AdminLayout";
 import DashboardPage from "./pages/DashboardPage";
 import UserPage from "./pages/UserPage";
+import MenuPage from "./pages/MenuPage";
 import "./App.css";
 
 /*
@@ -70,6 +71,8 @@ function App() {
           <Route index element={<DashboardPage />} />
           {/* 用户管理子路由 */}
           <Route path="users" element={<UserPage />} />
+          {/* 菜单管理子路由 */}
+          <Route path="menus" element={<MenuPage />} />
         </Route>
 
         {/* 404 页面 - 匹配所有未定义的路径 */}
